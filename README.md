@@ -2,7 +2,7 @@
 
 
 ### CS 601 - Homework Assignment #1 
-Generate an 3-page minimum HTML file that uses only HTML/HTML5 with no elements of CSS or JavaScript
+Generate an 3-page minimum HTML website that uses only HTML/HTML5 with no elements of CSS or JavaScript
 
 ### Programs Used:
 -   Virtual Studio Code - MIT License
