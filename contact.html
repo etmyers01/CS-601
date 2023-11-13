@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-    <!-- begin Header -->
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>The Good Things - Contact Me</title>
-    </head>
-    <!-- end Header -->
-    <!-- begin Body -->
+<!-- begin Header -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+
+    <title>The Good Things</title>
+</head>
+<!-- end Header -->
+<!-- begin Body -->
     <body>
-        <header>            <!-- main navigation -->
-            <h1>The Good Things</h1>
-                <nav id="main_nav">
-                    <a href="./index.html">Home</a> |
-                    <a href="./about.html">About Me</a> |
-                    <a href="./location.html">My Backyard</a> |
-                    <a href="./studies.html">Studies</a> |
-                    <a href="./gallery.html">Gallery</a> |
-                    <a href="./contact.html">Contact Me</a>
+        <header> <!-- main navigation -->
+            <div id="nav-header">
+                <h1>The Good Things</h1>
+                <nav class="main-nav">
+                    <a href="./index.html">Home</a>
+                    <a href="./about.html">About Me</a>
+                    <a href="./location.html">My Backyard</a>
+                    <a href="./studies.html">Studies</a>
+                    <a href="./gallery.html">Gallery</a>
+                    <a id="current-page" class="active-page" href="./contact.html">Contact Me</a>
                 </nav>
-        </header>           <!-- end main navigation -->
+            </div>
+        </header> <!-- end main navigation -->
         <main>              <!-- begin main page -->
-            <article>
+            <article id="start-content">
 
                 <header>    <!-- subheader -->
                     <h2> Contact Me</h2>
@@ -35,7 +41,7 @@
                 <section>       <!-- section #1 -->
                     <h3>Professional Sites and Email</h3>
                     
-                    <ul>        <!-- unorderd list containing external web and email links -->
+                    <ul class="contacts">        <!-- unorderd list containing external web and email links -->
                         <li>LinkedIn : <a href="https://www.linkedin.com/in/edward-myers-47873a147/">Click Here</a></li>
                         <li>GitHub : <a href="https://github.com/etmyers01">Click Here</a></li>
                         <li>Email : <a href="mailto:emyers01@bu.edu">Click Here</a></li>

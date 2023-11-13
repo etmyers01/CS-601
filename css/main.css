@@ -1,0 +1,390 @@
+/*  main.css
+    CS 601, Assignment #2
+    Ed Myers
+*/
+
+/* custom script-style font included for website headers:
+    - source: https://www.1001fonts.com/satisfy-font.html
+    - free license
+    - multiple formats generated using:
+        https://www.fontsquirrel.com/tools/webfont-generator
+*/
+@font-face {
+    font-family: 'satisfyregular';
+    src: url('./fonts/satisfy-regular-webfont.woff2') format('woff2'),
+        url('./fonts/satisfy-regular-webfont.woff') format('woff'),
+        url('./fonts/Satisfy-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* creative decision to have all content maximums scale no wider than 960px */
+* {
+    max-width: 960px;
+}
+
+/* html styling as a table with single column with auto margins to center the content in an oversized window. */
+html {
+    display: table;
+    margin: auto;
+}
+
+/* body container.  sets a san-serif font type, removes artifical margin and sets background color */
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgb(243, 216, 177);
+    display: table-cell;
+}
+
+/* font specification for h1, h2,h3, table and ol headers.  custom font is first priority, with a failback of several fonts in the san-serif family. */
+h1,
+h2,
+h3,
+th,
+ol {
+    font-family: 'satisfyregular', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* font returned to normal for ordereed & unordered line content */
+li p {
+    display: inline;
+    font: normal 1em 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* unordered list bullets styled to use morterboard emoji for about me page */
+.subjects li {
+    list-style-type: '🎓';
+    padding-inline-start: 3ch;
+}
+
+/* unordered list bullets styled to use pointer emoji for contact me page */
+.contacts li {
+    list-style-type: '👉';
+    padding-inline-start: 3ch;
+}
+
+
+/* custom sizing and font type for main headline.  adjusted top and bottom margings to allow more body content upward */
+h1 {
+    font-size: 32pt;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+/* keyframe animation: sliding in from left.  To use with h2 headers */
+@keyframes slidein-left {
+    from {
+        margin-left: 100%;
+        width: 100%
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+
+/* keyframe animation: sliding in from right.  To use with h3 headers */
+@keyframes slidein-right {
+    from {
+        margin-left: -100%;
+        width: 100%
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+
+/* custom sizing for h2.  specified larger sizing for emphasis and enabled animation */
+h2 {
+    text-align: center;
+    font-size: xx-large;
+    animation-duration: 3s;
+    animation-name: slidein-left;
+}
+
+/* custom formatting for section headers (h3), with a top and bottom fancy border and animation for visual interest */
+h3 {
+    border-top: 4px double black;
+    border-bottom: 1px solid black;
+    background-color: #c5d4e2;
+    padding: 5px;
+    animation-duration: 3s;
+    animation-name: slidein-right;
+}
+
+/* top navigation menu and header.  fixed content at top with styling and static when scrolling. */
+#nav-header {
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+    background-color: lightgrey;
+    box-shadow: 0 0 10px;
+    padding-bottom: 10px;
+}
+
+/* gives paragraph content a small margin for aesthetic purposes */
+p {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/* table style formatting: backgroudn color, auto margins to center, border */
+table {
+    border-style: double;
+    background-color: rgb(177, 165, 143);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* table header style color formatting */
+th {
+    background-color: #c5d4e2;
+}
+
+/* table data style formatting, cell border divisions and padding */
+td {
+    border: 1px dotted;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* studies page first column in table, centered text and 30% width */
+.first-col {
+    text-align: center;
+    width: 30%
+}
+
+/* studies page second column in table, auto width */
+.second-col {
+    width: auto;
+}
+
+/* image and iframe styling, add shadows and set minimum width when reducing resolution */
+img,
+iframe {
+    box-shadow: 0 0 10px;
+    min-width: 360px;
+}
+
+/* styling of all figure captions, centered, italic and small text */
+figcaption {
+    text-align: center;
+    font-style: italic;
+    font-size: small;
+}
+
+/* audio container formatting, center on page with flex position */
+.audio-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+/* tag used to identify start of body content on page.  point of reference for top of page offset to not collide with header nav */
+#start-content {
+    padding-top: 120px;
+}
+
+/* main navigation button row, flex sized in row orientation at full width */
+.main-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    column-gap: 10px;
+    vertical-align: middle;
+}
+
+/* anchor styling within nav, inline block to accept default width, sets font, shadow, and uppercase transform */
+.main-nav a {
+    display: inline-block;
+    border-radius: 5px;
+    text-decoration: none;
+    border: 1px solid grey;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 5px;
+    background-color: rgb(155, 201, 201);
+    box-shadow: 0 0 5px;
+    font-weight: bolder;
+    width: 110px;
+    text-transform: uppercase;
+}
+
+/* current page class, sets active page's button text as white */
+.active-page {
+    color: white;
+}
+
+/* current page identifier, sets active page background color and shadow */
+#current-page {
+    background-color: rgba(54, 104, 170, 0.822);
+    box-shadow: 0 0 5px blue;
+}
+
+/* hover characteristics over button, turns background white with black text and larger shadow */
+.main-nav a:hover {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 15px;
+    color: black;
+}
+
+/* customization for the iframe map.  override the width to be full viewable area, with margins inherited from figure styling */
+iframe {
+    width: 100%;
+}
+
+/* row container on gallery page for pictures.  establishes flex box with wrapping */
+.pic_row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* column container on gallery page for pictures.  sets width of columns for side-by-side viewing */
+.pic_column {
+    flex: 50%;
+    max-width: 50%;
+}
+
+/* images within gallery page flex box, align to middle with top margins set */
+.plc_column img {
+    margin-top: 8px;
+    vertical-align: middle;
+}
+
+/* footer behavior.  center, add padding, set background color and shadow to share continuity with header */
+footer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-shadow: 0 0 5px;
+    text-align: center;
+    background-color: lightgrey;
+}
+
+/* changes to the layout when the screen is at or contracts to 768px */
+@media only screen and (max-width: 768px) {
+
+    /* the start content top margin buffer changes to fit the new top nav gridwork 2x3 */
+    #start-content {
+        padding-top: 150px;
+    }
+
+    /* the top nav switches from inline to grid, autosizing so that all columms add up to screen width */
+    .main-nav {
+        display: grid;
+        grid-template-columns: 30% 30% 30%;
+    }
+
+    /* ensures the anchor tags don't try to autosize, but take the full width as dictated by .main-nav container */
+    .main-nav a {
+        width: 100%
+    }
+
+    /* changes gallery flexbox to single column orientation */
+    .pic_column {
+        flex: 100%;
+        max-width: 100%;
+    }
+}
+
+/* changes to the layout when the screen is at or contracts to 600px */
+@media only screen and (max-width: 600px) {
+
+    /* the lead heading font size becomes variable, shrinking to no less than 10pt, but then fitting the window*/
+    h1 {
+        font-size: calc(10pt + 5vw);
+    }
+
+    /* changes the section headers alignment to center for easier viewing at narrow width */
+    h3 {
+        text-align: center;
+    }
+
+    /* the treatment of images within figure tags changes, eliminating the side margin to show more picture at smaller res */
+    figure {
+        margin: 0px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+    }
+
+    /* paragraph text is made large for easy reading on medium screen sizes */
+    p,
+    td,
+    th {
+        font-size: large;
+    }
+}
+
+/* changes to the layout when the screen is at or contracts to 400px */
+@media only screen and (max-width: 400px) {
+
+    /* top nav now switches to flex vertical column orientation due to narrow width */
+    .main-nav {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* the start content top margin buffer changes to fit the new top nav column format */
+    #start-content {
+        padding-top: 250px;
+    }
+
+    /* paragraph text is made larger still for ease of reading in mobile portrait mode */
+    p {
+        font-size: larger;
+    }
+}
+
+/* changes to the layout when the content is printed */
+@media only print {
+
+    /* nullifies the top offset made for the fixed menu nav */
+    #start-content {
+        padding-top: 0px;
+    }
+
+    /* reduces size of all pictures to 500px to save paper space */
+    img {
+        max-width: 500px;
+    }
+    
+    /* changes gallery flexbox to single column orientation */
+    .pic_column {
+        flex: 100%;
+        max-width: 100%;
+    }
+
+    /* changes font to serif style for easier paper reading */
+    p {
+        font-family:'Times New Roman', Times, serif;
+        font-size: 10pt;
+    }
+
+    /* hiding header and footer in print mode */
+    header, footer {
+        display: none;
+    }
+
+    /* broadening article to full width of page */
+    article {
+        width:100%;
+        padding:0;
+        margin:0;
+    }
+
+    /* setting print margins on page */
+    @page {
+        margin: 2cm;
+    }
+
+    /* inserts full link after anchor text if href exists */
+    @media print {
+        a:after {
+          content: " ("attr(href)")";
+        }
+    }
+
+}

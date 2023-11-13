@@ -1,91 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-    <!-- begin Header -->
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>The Good Things - My Backyard</title>
-    </head>
-    <!-- end Header -->
-    <!-- begin Body -->
-    <body>
-        <header>            <!-- main navigation -->
+<!-- begin Header -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+
+    <title>The Good Things</title>
+</head>
+<!-- end Header -->
+<!-- begin Body -->
+
+<body>
+    <header> <!-- main navigation -->
+        <div id="nav-header">
             <h1>The Good Things</h1>
-                <nav id="main_nav">
-                    <a href="./index.html">Home</a> |
-                    <a href="./about.html">About Me</a> |
-                    <a href="./location.html">My Backyard</a> |
-                    <a href="./studies.html">Studies</a> |
-                    <a href="./gallery.html">Gallery</a> |
-                    <a href="./contact.html">Contact Me</a>
-                </nav>
-        </header>           <!-- end main navigation -->
-        <main>              <!-- begin main page -->
+            <nav class="main-nav">
+                <a href="./index.html">Home</a>
+                <a href="./about.html">About Me</a>
+                <a id="current-page" class="active-page" href="./location.html">My Backyard</a>
+                <a href="./studies.html">Studies</a>
+                <a href="./gallery.html">Gallery</a>
+                <a href="./contact.html">Contact Me</a>
+            </nav>
+        </div>
+    </header> <!-- end main navigation -->
+    <main> <!-- begin main page -->
 
-            <article>
-                <h2>My Backyard</h2>   <!-- subheader -->
-                <section>           <!-- section #1-->
-                    <h3>Where Am I?</h3>
-                    <figure>            <!-- banner img using an iframe with embed code -->
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d24347.25978519682!2d-76.9327155293457!3d40.28891071408221!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1699217005090!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        <figcaption>Embedded Map of East Pennsboro Township - Source: Google Maps</figcaption>
-                    </figure> 
-                    
-                    <p>             
-                        East Pennsboro Township is in south-central Pennsylvania, across the Susquehanna River from Harrisburg the State capital.
-                    </p> 
-                </section>          <!-- end section 1 -->
-                
-                <section>           <!-- section #2 -->
-                    <h3>Where I Work</h3>
+        <article id="start-content">
+            <h2>My Backyard</h2> <!-- subheader -->
+            <section> <!-- section #1-->
+                <h3>Where Am I?</h3>
+                <figure> <!-- banner img using an iframe with embed code -->
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d24347.25978519682!2d-76.9327155293457!3d40.28891071408221!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1699217005090!5m2!1sen!2sus"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <figcaption>Embedded Map of East Pennsboro Township - Source: Google Maps</figcaption>
+                </figure>
 
-                    <figure>        <!-- secondary img -->
-                        <img src="./images/wastewater_plant.jpg" alt="East Pennsboro Wastewater Treatment Plant" style="width:100%">
-                        <figcaption>East Pennsboro Wastewater Treatment Plant - Source: East Pennsboro Township</figcaption>
-                    </figure> 
+                <p>
+                    East Pennsboro Township is in south-central Pennsylvania, across the Susquehanna River from
+                    Harrisburg the State capital.
+                </p>
+            </section> <!-- end section 1 -->
 
-                    <p>
-                        Many of the things I do as an employee of my local government impact the services available to myself and other residents. I work for East Pennsboro Township in a triple capacity:                         
-                    </p>
-                    <table>             <!-- table showing job tiles & description -->
-                        <tr>
-                            <th>Title</th>
-                            <th>Description</th>
-                        </tr>
-                        <tr>
-                            <td><b>Wastewater Superintendent</b></td>
-                            <td>Manage personnel and equipment at the Township's wastewater treatment plant and collecting pumping stations.</td>
-                        </tr>
-                        <tr>
-                            <td><b>Stormwater Coordinator</b></td>
-                            <td>Keep an inventory of the Township's stormwater assets and activities, while maintaining compliance with the PA Department of Environmental Protection stormwater permit.</td>
-                        </tr>
-                        <tr>
-                            <td><b>IT Specialist</b></td>
-                            <td>Plan maintenance and upgrades on tech assets across all Township work sites, along with project management, working with vendors and balancing a spending budget.</td>
-                        </tr>
+            <section> <!-- section #2 -->
+                <h3>Where I Work</h3>
 
-                    </table>
-                </section>          <!-- end section 2 -->
+                <figure> <!-- secondary img -->
+                    <img src="./images/wastewater_plant.jpg" alt="East Pennsboro Wastewater Treatment Plant"
+                        style="width:100%">
+                    <figcaption>East Pennsboro Wastewater Treatment Plant - Source: East Pennsboro Township</figcaption>
+                </figure>
 
-                <section>           <!-- section #3 -->
-                    <h3>My Favorite Places</h3>
-                    <p>                 <!-- text with emoji -->
-                        East Pennsboro Township has 13 parks, but my favorite by far is Adam's Ricci Park.  It has 82 acres of ball fields, trails and rentable pavilions for an awesome day with the kids! 🙌
-                    </p>
-                    <p>                 <!-- text with external link -->
-                        Right next to the town of Summerdale is <a href="https://www.centralpenn.edu/">Central Penn College</a>, which has great seasonal activities for both students and community.
-                    </p>
-                    <p>
-                        My wife and I get takeout nearly once a week from Al's Pizza in the Summerdale Plaza about 5 minutes from where we live.  We love the salads there, but from time to time who doesn't like a good stromboli?
-                    </p>
-                </section>          <!-- end section 3 -->
+                <p>
+                    Many of the things I do as an employee of my local government impact the services available to
+                    myself and other residents. I work for East Pennsboro Township in a triple capacity:
+                </p>
+                <table> <!-- table showing job tiles & description -->
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td class="first-col"><b>Wastewater Superintendent</b></td>
+                        <td class="second-col">Manage personnel and equipment at the Township's wastewater treatment plant and collecting
+                            pumping stations.</td>
+                    </tr>
+                    <tr>
+                        <td class="first-col"><b>Stormwater Coordinator</b></td>
+                        <td class="second-col">Keep an inventory of the Township's stormwater assets and activities, while maintaining
+                            compliance with the PA Department of Environmental Protection stormwater permit.</td>
+                    </tr>
+                    <tr>
+                        <td class="first-col"><b>IT Specialist</b></td>
+                        <td class="second-col">Plan maintenance and upgrades on tech assets across all Township work sites, along with
+                            project management, working with vendors and balancing a spending budget.</td>
+                    </tr>
 
-            </article>
-        </main>                 <!-- end main page -->
-        <!-- begin footer -->
-        <footer>&copy; 2023 Ed Myers - Created using Visual Studio Code - MIT License</footer>
-        <!-- end footer -->
-    </body>
-    <!-- end body -->
+                </table>
+            </section> <!-- end section 2 -->
+
+            <section> <!-- section #3 -->
+                <h3>My Favorite Places</h3>
+                <p> <!-- text with emoji -->
+                    East Pennsboro Township has 13 parks, but my favorite by far is Adam's Ricci Park. It has 82 acres
+                    of ball fields, trails and rentable pavilions for an awesome day with the kids! 🙌
+                </p>
+                <p> <!-- text with external link -->
+                    Right next to the town of Summerdale is <a href="https://www.centralpenn.edu/">Central Penn
+                        College</a>, which has great seasonal activities for both students and community.
+                </p>
+                <p>
+                    My wife and I get takeout nearly once a week from Al's Pizza in the Summerdale Plaza about 5 minutes
+                    from where we live. We love the salads there, but from time to time who doesn't like a good
+                    stromboli?
+                </p>
+            </section> <!-- end section 3 -->
+
+        </article>
+    </main> <!-- end main page -->
+    <!-- begin footer -->
+    <footer>&copy; 2023 Ed Myers - Created using Visual Studio Code - MIT License</footer>
+    <!-- end footer -->
+</body>
+<!-- end body -->
+
 </html>
