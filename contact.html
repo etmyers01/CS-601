@@ -7,52 +7,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="./css/main.css">
-
+    <script src="./js/main.js"></script>
     <title>The Good Things</title>
 </head>
 <!-- end Header -->
 <!-- begin Body -->
-    <body>
-        <header> <!-- main navigation -->
-            <div id="nav-header">
-                <h1>The Good Things</h1>
-                <nav class="main-nav">
-                    <a href="./index.html">Home</a>
-                    <a href="./about.html">About Me</a>
-                    <a href="./location.html">My Backyard</a>
-                    <a href="./studies.html">Studies</a>
-                    <a href="./gallery.html">Gallery</a>
-                    <a id="current-page" class="active-page" href="./contact.html">Contact Me</a>
-                </nav>
-            </div>
-        </header> <!-- end main navigation -->
-        <main>              <!-- begin main page -->
-            <article id="start-content">
 
-                <header>    <!-- subheader -->
-                    <h2> Contact Me</h2>
+<body>
+    <!-- header navigation built in JS -->
+    <script>
+        document.write(getHeader());
+    </script>
+    <!-- end header-->
+    <main> <!-- begin main page -->
+        <article id="start-content">
 
-                    <figure>        <!-- banner img -->
-                        <img src="./images/contact-us-6921414_1280.jpg" alt="Contact Us" style="width:100%">
-                        <figcaption>Contact Us - Source: Pixabay Free License</figcaption>
-                    </figure> 
-                </header>
+            <header> <!-- subheader -->
+                <h2> Contact Me</h2>
 
-                <section>       <!-- section #1 -->
-                    <h3>Professional Sites and Email</h3>
-                    
-                    <ul class="contacts">        <!-- unorderd list containing external web and email links -->
-                        <li>LinkedIn : <a href="https://www.linkedin.com/in/edward-myers-47873a147/">Click Here</a></li>
-                        <li>GitHub : <a href="https://github.com/etmyers01">Click Here</a></li>
-                        <li>Email : <a href="mailto:emyers01@bu.edu">Click Here</a></li>
-                    </ul>
-                </section>      <!-- end section 1 -->
-                
-            </article>
-        </main>                 <!-- end main page-->
-        <!-- begin footer -->
-        <footer>&copy; 2023 Ed Myers - Created using Visual Studio Code - MIT License</footer>
-        <!-- end footer -->
-    </body>
-    <!-- end body -->
+                <figure> <!-- banner img -->
+                    <img src="./images/contact-us-6921414_1280.jpg" alt="Contact Us" style="width:100%">
+                    <figcaption>Contact Us - Source: Pixabay Free License</figcaption>
+                </figure>
+            </header>
+
+            <section> <!-- section #1 -->
+                <h3>Professional Sites and Email</h3>
+
+                <ul class="contacts"> <!-- unorderd list containing external web and email links -->
+                    <li>LinkedIn : <a href="https://www.linkedin.com/in/edward-myers-47873a147/">Click Here</a></li>
+                    <li>GitHub : <a href="https://github.com/etmyers01">Click Here</a></li>
+                    <li>Email : <a href="mailto:emyers01@bu.edu">Click Here</a></li>
+                </ul>
+            </section> <!-- end section 1 -->
+
+        </article>
+    </main> <!-- end main page-->
+   <!-- footer built in JS -->
+   <script>
+    document.write(getFooter());
+</script>
+<!-- end footer -->
+</body>
+<!-- end body -->
+
 </html>
