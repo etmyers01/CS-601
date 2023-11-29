@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- begin head -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <script src="./js/main.js" defer></script>
+    <title>Ed's Assignment #5 CS601</title>
+</head>
+<!-- end head -->
+
+<!-- begin body-->
+<body>
+
+    <!-- start header -->
+    <header>
+        <h1>Ed's JSON Reader</h1>
+    </header>
+    <!-- end header -->
+    
+    <!-- start main -->
+    <main>
+        <section>
+            <h2>CS 601 - Assignment #5</h2>
+            <!-- begin form -->
+            <form id="assign5" >
+                <!-- Part 1.A - firstName text field -->
+                <label for="jsonFile">Enter your desired JSON file: </label>
+                <p>
+                    <input type="text" id="jsonFile" name="jsonFile" 
+                    value="https://etmyers01.github.io/CS-601/Assignments/CS601_HW5_Myers/json/school.json">
+                </p>
+                <p>
+                    <input type="submit" id="submit" value="Submit">
+                </p>
+                <!-- text area within fieldset -->
+                <fieldset>
+                    <legend>JSON Reader Output:</legend>
+                    <textarea id = 'textArea' name="textArea" rows="30" placeholder="Awaiting input..." readonly></textarea>
+                </fieldset>
+            </form>
+            <!-- end form -->
+        </section>
+    </main>
+    <!-- end main -->
+
+    <!-- start footer -->
+    <footer>
+        &copy; 2023 Ed Myers
+    </footer>
+    <!-- end footer -->
+</body>
+<!-- end body -->
+</html>
