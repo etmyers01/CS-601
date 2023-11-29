@@ -1,20 +1,16 @@
 {
     "college_degrees": [
         {
-            "degree": {
                 "school": "University of Pittsburgh",
                 "program/major": "Computer Science",
                 "type": "BS",
                 "year_conferred": 2005
-            }
         },
         {
-            "degree": {
                 "school": "Boston University",
                 "program/major": "Computer Information Systems",
                 "type": "MS",
                 "year_conferred": 2024
-            }
         }
     ]
 }
