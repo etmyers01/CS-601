@@ -1,0 +1,72 @@
+/* Ed Myers
+CS 601 - Assignment #4
+main.css */
+
+/* satisfies part 1.F - CSS styling of HTML form */
+
+/* centers all content with auto margins */
+* {
+    margin: auto
+}
+
+/* centers main and section headers */
+header,
+h2 {
+    text-align: center;
+}
+
+/* affects form background color */
+form {
+    background-color: rgb(205, 223, 235);
+    width: 100%;
+    min-width: 300px;
+    max-width: 600px;
+    padding: 10px
+}
+
+/* styles fieldset legend */
+legend {
+    font-weight: bold;
+}
+
+/* treats only form direct child inputs as block layout */
+form>input {
+    display: block;
+}
+
+/* styling for input fields whose state is valid.  sets outline to green */
+input[type=text]:valid {
+    outline: 2px solid green;
+}
+
+/* styling for submit button, create margin */
+#submit {
+    margin: 5px;
+}
+
+/* styling for submit button when in disabled state. sets text and outline to red */
+#submit:disabled {
+    color: red;
+    outline: 2px solid red;
+}
+
+/* styling for submit button when in enabled state. sets text and outline to green */
+#submit:enabled {
+    color: green;
+    outline: 2px solid green;
+}
+
+/* styling of error message class.  sets color, font size and margin */
+.error {
+    color: red;
+    font-size: 13px;
+    margin: 5px;
+    font-style: italic;
+}
+
+/* footer styling, center and margin set */
+footer {
+    margin-top: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}

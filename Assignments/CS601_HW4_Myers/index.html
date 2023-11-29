@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- begin head -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <script src="./js/main.js" defer></script>
+    <title>Ed's Assignment #4 CS601</title>
+</head>
+<!-- end head -->
+
+<!-- begin body-->
+<body>
+
+    <!-- start header -->
+    <header>
+        <h1>Ed's JavaScript Form</h1>
+    </header>
+    <!-- end header -->
+    
+    <!-- start main -->
+    <main>
+        <section>
+            <h2>CS 601 - Assignment #4</h2>
+            <!-- begin form -->
+            <!-- Part 1.G - form with action and method set. on submit triggers form validity state -->
+            <form id="assign4" action="https://cs601.bu-course-examples.com/hw4/380a98f5-5191-496f-8aa1-7acc1da83cc5" method="post">
+                <!-- Part 1.A - firstName text field -->
+                <label for="firstName">Enter your first name:</label>
+                <input type="text" id="firstName" name="firstName">
+                <!-- Error field placeholder-->
+                <p class="error" id="fNameError"></p>
+
+                <!-- Part 1.B - lastName text field -->
+                <label for="lastName">Enter your last name:</label>
+                <input type="text" id="lastName" name="lastName">
+                <!-- Error field placeholder-->
+                <p class="error" id="lNameError"></p>
+
+                <!-- Part 1.C & 2.C - facilitator text field -->
+                <label for="facilitator">Enter your faciliator's name:</label>
+                <input type="text" id="facilitator" name="facilitator">
+                <!-- Error field placeholder-->
+                <p class="error" id="facError"></p>
+
+                <!-- Part 1.D - radio button group -->
+                <fieldset>
+                    <legend>Choose a color:</legend>
+                    <input type="radio" name="radioGroup" id="red">
+                        <label for="red">Red</label><br>
+                    <input type="radio" name="radioGroup" id="green">
+                        <label for="green">Green</label><br>
+                    <input type="radio" name="radioGroup" id="blue">
+                        <label for="blue">Blue</label><br>
+                    <input type="radio" name="radioGroup" id="yellow">
+                        <label for="yellow">Yellow</label>
+                </fieldset>
+                <!-- Error field placeholder-->
+                <p class="error" id="radioError"></p>
+
+                <!-- Part 1.E - checkbox group -->
+                <fieldset>
+                    <legend>Choose one or more animals:</legend>
+                    <input type="checkbox" name="check1" id="zebra">
+                        <label for="zebra">Zebra</label><br>
+                    <input type="checkbox" name="check2" id="lion">
+                        <label for="lion">Lion</label><br>
+                    <input type="checkbox" name="check3" id="tiger">
+                        <label for="tiger">Tiger</label><br>
+                    <input type="checkbox" name="check4" id="squirrel">
+                        <label for="squirrel">Squirrel</label><br>
+                </fieldset>
+                <!-- Error field placeholder-->
+                <p class="error" id="checkError"></p>
+                
+                <input type="submit" id="submit" value="Disabled">
+
+            </form>
+            <!-- end form -->
+        </section>
+    </main>
+    <!-- end main -->
+
+    <!-- start footer -->
+    <footer>
+        &copy; 2023 Ed Myers
+    </footer>
+    <!-- end footer -->
+</body>
+<!-- end body -->
+</html>

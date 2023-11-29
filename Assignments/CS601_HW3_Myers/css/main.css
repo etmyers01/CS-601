@@ -1,0 +1,54 @@
+/*  main.css
+    CS 601, Assignment #3
+    Ed Myers
+*/
+
+/* html styling, to center full page content */
+html {
+    display: table;
+    margin: auto;
+}
+
+/* body styling, to set page width and table cell characteristics */
+body {
+    display: table-cell;
+    width: 960px;
+}
+
+/* section styling, including a background autumn image with 'slinky scaling' */
+section {
+    background-image: url(../img/autumn-21118_1280.jpg);
+    background-size:100% 100%;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-width: 400px;
+}
+
+/* header styling, centering and setting margins */
+h1,
+h2 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+/* button styling, including border, margin and custom width/height */
+button {
+    width: 200px;
+    height:70px;
+    border: 5px double darkred;
+    background-color: orange;
+    margin: 20px;
+}
+
+/* div styling, setting height to force the section container to pleasant height */
+div {
+    height: 500px;
+}
+
+/* footer styling, center and margin set */
+footer {
+    margin-top: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
