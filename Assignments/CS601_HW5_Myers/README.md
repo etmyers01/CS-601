@@ -4,8 +4,8 @@
 -   Visual Studio Code - MIT License
 
 ### Instructions:
--   All files must stay together in the file directory found in the CS601_HW4_Myers.zip file.  The primary launch page is intended to be index.html.
--   From the beginning, the submit button is disabled.  The user must provide input in compliance with the error readouts across all fields for the submit button to enable.
+-   All files must stay together in the file directory found in the CS601_HW5_Myers.zip file.  The primary launch page is intended to be index.html.
+-   The default JSON file is preloaded into the input field.  Upon hitting 'submit', the code attempts to connect to the specified JSON file and render the data into a procedurally generated HTML table in the lower field.
 
 ## Assignment #5 (JavaScript & JSON) 11/30/2023
 Create and lint a JSON file with college degree data, then host it for retrieval and table rendering in an HTML document.  Use JavaScript to acquire the JSON with fetch and procedurally generate a table for insertion into the HTML page.
