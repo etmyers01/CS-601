@@ -5,6 +5,7 @@ main.js */
 // acquire form elements for editing
 const fileName = document.getElementById("jsonFile");   // file input field
 const textOut = document.getElementById("textArea");    // text area field
+const tableField = document.getElementById("tableSpace");    // table field
 
 // acquire submit button and assign a click listener
 const subButton = document.getElementById('submit');
@@ -28,8 +29,9 @@ function getDoc() {
         return response.json();                     // promise returned
     }).then(data => {
         jsonParse(data);                           // send data to parser
+        tableGen(data);
     }).catch((err) => {                             // catch error and update text
-        textOut.value += `fetch rejected: ${err}\n\n`;
+        textOut.value += `Fetch rejected: ${err}\n\n`;
     });
 }
 
@@ -50,6 +52,40 @@ function jsonParse(data) {
             `   Type:  ${degree.type}\n` +
             `   Year Conferred:  ${degree.year_conferred}\n\n`
     }
+    textOut.value += 'Creating dynamic HTML table below...\n\n'
+}
+
+function tableGen (data) {
+
+    let htmlOut = 
+    `
+    <table>
+        <tr>
+            <th></th>
+    `;
+
+    for (let i = 0; i < data.college_degrees.length; ++i)
+    {
+        htmlOut += `<th>Degree #${i+1}</th>`;
+    }
+
+    htmlOut += 
+    `
+        </tr>
+    `;
+
+    for (let j = 0; j < data.college_degrees.length; ++j)
+    {
+        htmlOut += ''
+    }
+
+
+    htmlOut += 
+    `
+    </table>
+    `
+    tableField.innerHTML = htmlOut;
+
 }
 
 
