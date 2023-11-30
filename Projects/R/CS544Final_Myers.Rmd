@@ -1,0 +1,714 @@
+---
+title: "Measures of Growth for the Winter Olympics"
+subtitle: "CS544 Final Project Presentation (Prof. Kalathur, Spring 2022)"
+author: "Edward Myers"
+date: "2/21/2022"
+output:
+  html_document:
+    fig_width: 8
+    code_folding: hide
+    highlight: tango
+    toc: true
+    toc_float:
+      collapsed: true
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.width=8, fig.height=4,
+                      echo=FALSE, warning=FALSE, message=FALSE)
+```
+
+## Data Set
+This dataset was acquired from <https://www.kaggle.com/datasets>.  Compiled by le Minh Nguyen, the dataset ‘disciplie_details.csv’ provides data regarding the Winter Olympic games from 1924 to 2018.  The data includes Olympic game number, year, event discipline, event category, and date of event competition.  The data also includes number of overall participants per event, number of competing countries per event, and the gold, silver, and bronze winners along with their home countries.
+
+Source file: <https://www.kaggle.com/leminhnguyen/winter-olympics-1924-2018>
+
+## Data Preparation
+The data was loaded from .csv format into an R data frame.  As part of the analysis centers around a comparison of gender participation, a parse of the ‘category’ column was needed to extract the male/female classification of the event.  This information was appended to the data frame as a new column for easier extraction.  Additionally, several text encoding anomalies existed in the events and dates.  These were corrected using string manipulation within the data frame. Further textual anomalies exist in the participant names and other related data, but remains unaltered as it was not used.
+
+```{r echo=T}
+library(stringr)
+# Set working directory
+setwd(dir="C:/Users/kakar/OneDrive/Desktop/CS 544 R/Final Project")
+
+# Read in 'discipline_details.csv' dataset.
+olympics <- read.csv(
+  "discipline_details.csv", 
+  header = TRUE)
+
+# Extract genders of participants and create new category.
+olympics$gender = word(olympics$category, -1, sep=', ')
+
+# Fix encoding format issues with replacement text.
+olympics$category = str_replace_all(olympics$category, 'Ã—', 'x')
+olympics$date = str_replace_all(olympics$date, 'â€“ ', '-')
+```
+
+```{r echo=F, results='asis'}
+library(knitr)
+library(dplyr)
+library(kableExtra)
+
+olympics %>%
+  kable %>%
+  kable_styling("striped") %>%
+  scroll_box(width='750px', height='300px')
+```
+
+***
+
+## Objective
+The goal of this analysis is to measure the growth of the Winter Olympic games between the years 1924 and 2018 across multiple facets:
+
+1.	Participant Statistics
+    +	Overall participation and event number increase
+    + Gender distribution comparison from 1924 to 1976 to 2018
+2.	Event Statistics
+    +	Distribution of overall participation in top events across all Winter Olympics 
+    +	Distribution of participant countries in top events across all Winter Olympics
+3.	Country Statistics
+    +	Medal counts of top winning countries across all Winter Olympics
+    +	Medal count spread comparison from 1924 to 1976 to 2018 
+4.	Population vs. Samples
+    +	Central Limit Theorem
+    +	Sampling Methods
+
+## Participant Statistics
+
+### Athlete, Country & Event Increase
+
+The first task is to look at overall participation of events across all Winter Olympic years.  The raw data needed manipulation to split out participation counts by event year.  A tibble of the Olympic data frame was used to group the years and sum the yearly participants together.  At the same time, the unique event counts were tallied, creating a new tibble column.  
+
+
+```{r echo=T}
+# Plot #1 - Comparing participation in each Olympic year (tibble).
+library(plotly)
+library(tidyverse)
+
+tibble(olympics) %>%
+  select(event_year, discipline, category, n_participants, 
+         n_country_participants) %>%
+  group_by(event_year) %>%
+  summarize(participants_year = sum(n_participants), 
+            countries_year = sum(n_country_participants),
+            event_num = length(unique(category))) -> years; years
+
+# create a plotly barchart.
+plot_ly(years) %>%
+  layout(title='Increases Across Winter Olympic Years',
+         xaxis=list(title="Olympic Years", tickvals=~event_year),
+         margin=list(l=50, r=50, pad=0),
+         yaxis=list(title="Number of Participants"),
+         yaxis2=list(title=list(text="Number of Events"), 
+                     range=c(5,100), dtick=5,
+                     overlaying='y', side='right'),
+         yaxis3=list(title=list(text="Number of Countries"),
+                     range=c(75,2000), dtick=200,
+                     overlaying='y', side='right', anchor='free', position=1.3),
+         showlegend=T, legend=list(x=0.1,y=0.9 )
+  ) %>%
+  add_trace(x = ~event_year,
+            y = ~participants_year,
+            type="bar",
+            color=I('light blue'),
+            name="# of Athletes",
+            hovertemplate='Year: %{x}, Participants: %{y}',
+            width=1.75
+  )%>%
+  add_trace(x = ~event_year, 
+            y = ~countries_year, 
+            type='scatter', 
+            mode='lines+markers',
+            yaxis='y3',
+            name="# of Countries", 
+            hovertemplate='Year: %{x}, Countries: %{y}', 
+            color=I('orange')
+  )%>%
+  add_trace(x = ~event_year, 
+          y = ~event_num, 
+          type='scatter', 
+          mode='lines+markers',
+          yaxis='y2',
+          name="# of Events", 
+          hovertemplate='Year: %{x}, Events: %{y}', 
+          color=I('red')
+)
+
+```
+
+The blue bars represent total participation per year. The red line with markers represents the trend of the participation across the same time.  To overlay both the number of events and number of yearly participants, Two y axes were used in plot_ly to represent each data range’s max and min values. 
+
+Analysis:
+
+Concerning the visual anomalies in the data, the Olympics did not occur during wartime in 1940 and 1944.  Also, in 1994 the International Olympic Committee decided to separate the Summer and Winter Olympic years, resulting in the two-year split between the 1992 and 1994 games.  Despite these impacts, a very consistent correlation exists between both an increase in participation and an increase in events over time.  This demonstrates that the creation of new events is more of a driving factor behind the increase in participants than the presence of new countries.  Regarding the shape of the plot, the data almost represents an incomplete left-skewed normal distribution with the later years coming close to the median of the bell.   There is not any reason to believe that the number of events or the participation overall will drop in subsequent years to fit the normal curve, but the plateau of events and participation may be related to several logistical factors.  Increasing stress on the host country to provide slope, arena and building venues balanced against the increased time commitment and event planning will eventually peak the creation of new events and added participants.
+
+Below is a correlation matrix and plot comparing the scatter of number of participants per year, number of countries per year and number of events per year:
+
+```{r echo=F}
+# Correlation Between Event Participants & Country Participants
+round(cor(years[2:4]), 5) -> corrVals; corrVals
+```
+
+```{r echo=T}
+# Plot 1B - Scatterplots of Correlation
+
+select(years, py=participants_year, cy=countries_year, en=event_num) -> years2
+
+c1 = plotly_empty(years2, x=0, y=0, type='scatter', mode='markers', visible=F)
+              
+c2 = plot_ly(years2, x=~py, y=~cy, type='scatter', mode='markers',
+             name="# Participants vs. # Countries")
+c3 = plot_ly(years2, x=~py, y=~en, type='scatter', mode='markers',
+             name="# Participants vs. # Events")
+c4 = plot_ly(years2, x=~cy, y=~py, type='scatter', mode='markers',
+             name="# Countries vs. # Participants")
+c5 = plotly_empty(years2, x=NULL, y=NULL, type='scatter', mode='markers') %>%
+  add_annotations(x=0,y=0, showarrow=F, textposition='center',
+      text = "<b>Correlation Plot\nParticipants vs.\nCountries vs.\nEvents<b>")
+             
+c6 = plot_ly(years2, x=~cy, y=~en, type='scatter', mode='markers',
+             name="# Countries vs. # Events")
+c7 = plot_ly(years2, x=~en, y=~py, type='scatter', mode='markers',
+             name="# Events vs. # Participants")
+c8 = plot_ly(years2, x=~en, y=~cy, type='scatter', mode='markers',
+             name="# Events vs. # Countries")
+c9 = plotly_empty(years2, x=0, y=0, type='scatter', mode='markers', visible=F)
+
+subplot(c1,c2,c3,c4,c5,c6,c7,c8,c9, nrows=3) %>%
+  layout(legend=list(orientation='h'))
+```
+
+### Gender Distribution Across Years
+
+Another metric to use when looking at the spread of participants in the Winter Olympic games are the proportions of male to female athletes over time.  A tibble was used to isolate three distinct Olympic years (1924, 1976 and 2018) which act roughly as the minimum, median and maximum of the population time frame.  The subsets were then sorted by the user-created 'gender' category mentioned above, with the result fed into a triple pie chart shown below.
+
+```{r echo=T}
+# Bonus Plot - Gender Disparity in Events Across Years
+
+tibble(olympics) %>%
+  select(event_year, gender, n_participants, category) -> baseSet
+
+baseSet %>%
+  filter(event_year==1924) -> gen1924
+baseSet %>%
+  filter(event_year==1976) -> gen1976
+baseSet %>%
+  filter(event_year==2018) -> gen2018
+
+plot_ly() %>%
+  layout(showlegend=T, grid=list(rows=1, columns=3),
+         title="Multi-Year Gender Distribution of Winter Olympics") %>%
+  add_pie(gen1924, type='pie', labels=gen1924$gender, hole=.4, name="1924",
+          values=gen1924$n_participants, textinfo='label+percent',
+          marker=list(line=list(color='#FFFFFF', width=2)),
+          domain=list(x=c(0.03, 0.29), y=c(0,1)), title="<b>1924<b>") %>%
+
+  add_pie(gen1976, type='pie', labels=gen1976$gender, hole=.4, name="1976",
+          values=gen1976$n_participants, textinfo='label+percent',
+          marker=list(line=list(color='#FFFFFF', width=2)),
+          domain=list(x=c(0.37, 0.63), y=c(0,1)), title="<b>1976<b>") %>%
+
+  add_pie(gen2018, type='pie', labels=gen2018$gender, hole=.4, name="2018",
+          values=gen2018$n_participants, textinfo='label+percent',
+          marker=list(line=list(color='#FFFFFF', width=2)),
+          domain=list(x=c(0.71, 0.97), y=c(0,1)), title="<b>2018<b>")
+```
+
+Analysis:
+
+Mixed and open events are very consistent across this sampling, seeing marginal growth over the three years. Isolating male vs. female ratios, in order the percentages progress generally from 98% Male/2% Female, 77% Male/23% Female, and finally to 58% Male/42% Female in 2018.  The data shows that women are participating in a more equal percentage with men as time progresses.  When combined with the data above, this trend may be attributed to multiple factors including an increasing number of events, more events that have male and female categories, and strides in social equality and representation.  
+
+## Event Statistics
+
+### Distribution of Overall Participation
+
+Beyond looking at the participation across the entire Winter Olympics per year, the next plot shows the distribution of participants sorted by event.  This information was not present in the raw data, so a tibble was used to sort the events in order of overall participation and trim all but the top 15.  A second tibble re-referenced the original data, now extracting out only the events isolated by the first tibble, and added median data for ordered graphical representation.
+
+```{r echo=T}
+# Plot #2 - Distribution of Athletes to Events, Top 15 participated events.
+
+# Represent the top 15 participated events using a tibble
+tibble(olympics) %>%
+  select(category, n_participants) %>%
+  group_by(category) %>%
+  summarize(part_category = sum(n_participants)) %>%
+  arrange(desc(part_category)) -> events; events
+    
+topEvents = events$category[1:15]  
+
+# A second tibble sorts the data by event category, then summarizes a new 
+# plotting tibble with a top-15 trimmed category, median and participant data.
+tibble(olympics) %>%
+  select(category, n_participants) %>%
+  group_by(category) %>%
+  summarize(category = category[category %in% topEvents], 
+            median = median(n_participants[category %in% topEvents]),
+            n_participants = n_participants[category %in% topEvents]) %>%
+  arrange(desc(median)) -> perEvent; perEvent
+
+# Create a medians vector to order the y-axis.
+lblMedian = rev(unique(perEvent$category))
+  
+# A plot_ly boxplot for the data.
+plot_ly(perEvent, type="box", y=~category, x=~n_participants, color=~category)%>%
+  
+  layout(title="Top 15 Event Participation Across All Winter Olympics",
+         xaxis=list(title="# of Participants", range=c(0,350), showgrid=T),
+         yaxis=list(title=list(text="Event", standoff=1L), showgrid=T,  
+            categoryorder = 'array', categoryarray = lblMedian))
+```
+
+Analysis:
+
+The boxplot of this distribution shows a team sport, Ice Hockey, at the lead followed by many variations of skiing, which is a long-time staple of the Winter Olympics.  All events show a decent spread between min and max participation, the greatest of which is men’s Ice Hockey.  As in other team events, the rules do not commonly change over time to allow more players to participate in an event, unless there are alternates.    Also applicable to the single person competitions, the only explanation for a large spread in participation over the years is a change in the number of participant countries.  For the same reason, if an outlier existed in an event, it makes sense that it remained relatively close to the distribution. 
+
+### Distribution of Country Participation
+
+Comparing notes with the distribution of overall participants above, it is no surprise to see many of the same events in the per-country distribution.  The same steps were taken to manipulate participant data as in the last boxplot, with the exception being a focus on the ‘n_country_participation’ column for means of trimming and sorting. 
+
+This plot is dominated by downhill and cross-county skiing events, sorted by maximum country participation.  A correlation between the spread of participant countries per event and the spread of overall event participation is now visible.  
+
+```{r echo=T}
+# Plot #3 - Distribution of Countries to Events, Top 15 participated events.
+
+# Represent the top 15 participated events using a tibble
+tibble(olympics) %>%
+  select(category, n_country_participants) %>%
+  group_by(category) %>%
+  summarize(country_category = sum(n_country_participants)) %>%
+  arrange(desc(country_category)) -> events2; events2
+
+topEvents2 = events2$category[1:15]  
+
+# A second tibble sorts the data by event category, then summarizes a new 
+# plotting tibble with a top-15 trimmed category, median and participant data.
+tibble(olympics) %>%
+  select(category, n_country_participants) %>%
+  group_by(category) %>%
+  summarize(category = category[category %in% topEvents2], 
+            median = median(n_country_participants[category %in% topEvents2]),
+            n_country_participants = 
+              n_country_participants[category %in% topEvents2]) %>%
+  arrange(desc(median)) -> perEvent2; perEvent2
+
+# Create a medians vector to order the y-axis.
+lblMedian2 = rev(unique(perEvent2$category))
+
+# A plot_ly boxplot for the data.
+plot_ly(perEvent2, type="box", y=~category, x=~n_country_participants, 
+        color=~category)%>%
+  
+  layout(title="Top 15 Event Country Participation Across All Winter Olympics",
+         xaxis=list(title="# of Participant Countries", range=c(0,80), showgrid=T),
+         yaxis=list(title=list(text="Event", standoff=1L), showgrid=T,  
+                    categoryorder = 'array', categoryarray = lblMedian2))
+```
+
+## Country Statistics
+
+### Country Medal Counts
+
+Now will begin the focus on performances between countries overall by measure of all medals.  To achieve this, a table summary was used to capture the frequencies from the 'gold_country', 'silver_country', and 'bronze_country' columns after the data was grouped using a tibble.  The first chart compares the winning percentages of the top 10 most winning countries, achieved by sorting the tibble by frequency and using only the top 10 rows.  The second pie chart uses the same data but adds an 11th wedge which represents all of the remaining medals won by other countries.  
+
+```{r echo=T}
+# Plot #4 - Most Winning Countries by Medal Count across all Winter Olympics
+
+# Sum all medals earned by each country across all years.
+
+# Create a tibble to sum all medals earned by each country across years
+tibble(olympics) %>%
+  select(gold_country, silver_country, bronze_country) %>%
+  summarize(country = unique(c(gold_country,silver_country,bronze_country)),
+            count = (table(c(gold_country, silver_country, bronze_country)))
+            [country]) %>%
+  mutate(count = as.integer(count)) %>%
+  arrange(desc(count)) -> medals; medals 
+
+# Trim the data to include only top 10 medal winning countries.
+medalsTop = medals[1:10, ]
+medalsBot = medals[11:length(medals), ]
+
+# Total the remaining countries medal winnings for comparison pie chart.
+allMedals = medalsTop
+allMedals[11,1] ="Other Countries"
+allMedals[11,2] = sum(medalsBot$count, na.rm=T)
+
+# Create a plotly pie chart.
+plot_ly(medalsTop, type='pie', labels=~country, values=~count,
+            textinfo='label+percent', hoverinfo = 'text',
+            text = paste("Country: ", medalsTop$country, ", Medals: ", 
+                         medalsTop$count),
+            marker=list(line=list(color='#FFFFFF', width=2)),
+            title="Top 10 Winning Countries")%>%
+  layout(title="Proportion of Medals Won Across all Winter Olympics",
+         showlegend=F, grid=list(rows=1, columns=2), 
+         margin=list(b=70))%>%
+  add_pie(allMedals, type='pie', labels=allMedals$country, 
+            values=allMedals$count, textinfo='label+percent',
+            text = paste("Country: ", allMedals$country, ", Medals: ",
+                          allMedals$count),
+            marker=list(line=list(color='#FFFFFF', width=2)),
+            domain=list(row=0, column=1), 
+            title="Compared with All other Countries")
+```
+
+Analysis
+
+Among the top 10 most winning countries across Winter Olympic years, there exists a good distribution of percentages.  Countries within the arctic regions are well represented here, which makes sense as these Olympic events are all winter activities.  Pulling in the results of the second pie chart, the top 10 performing countries contribute to roughly half of overall medals won.  The top four performing countries have over a quarter of the total, suggesting that these countries see great Winter Olympics success across time.  To see if this trend is representative across all of the Winter Olympics, lets now compare medal winnings over sample years.
+
+### Medal Counts: 1924 / 1976 / 2018
+
+For this assessment it is convenient to return to the three years that represent the minimum, median, and maximum years in this dataset.  Comparing the proportions of medal winnings by country across these three years should give insight into winning trends, if any.  The multivariate bar plot takes information from the ‘event_year’, ‘gold_country’, ‘silver_country’ and ‘bronze_country’ data columns.  A tibble was used to filter the 1924, 1976 and 2018 event entries.  A table within the tibble stored the unique countries and their frequency in the data, representing their overall medal count for that year.  The data was added as three individual traces into a plot_ly representation.
+
+```{r echo=T}
+# Plot #5 - Bivariate Table - countries each year vs frequency of medals.
+
+# create 3 tibbles to summarize total medal data for the desired years.
+tibble(olympics) %>%
+  filter(event_year==1924) %>%
+  summarize(country = unique(c(gold_country,silver_country,bronze_country)),
+            count = (table(c(gold_country, silver_country, bronze_country)))
+            [country]) -> med1924
+tibble(olympics) %>%
+  filter(event_year==1976) %>%
+  summarize(country = unique(c(gold_country,silver_country,bronze_country)),
+            count = (table(c(gold_country, silver_country, bronze_country)))
+            [country]) -> med1976
+tibble(olympics) %>%
+  filter(event_year==2018) %>%
+  summarize(country = unique(c(gold_country,silver_country,bronze_country)),
+            count = (table(c(gold_country, silver_country, bronze_country)))
+            [country]) -> med2018
+
+# Create a plot_ly and add the three bar charts to the plot in stack mode.
+plot_ly()%>%
+  layout(title="All Medals Per Country vs.Year", autosize=T, 
+         margin=list(b=-20, pad=-2), barmode='stack', 
+         xaxis=list(title="Country/Year Grouping", automargin=F),
+         yaxis=list(title="# of Medals", dtick=5, range=c(0,40)))%>%
+  add_bars(med1924, y=med1924$count, x=med1924$country, name="1924 Medals")%>%
+  add_bars(med1976, y=med1976$count, x=med1976$country, name="1976 Medals")%>%
+  add_bars(med2018, y=med2018$count, x=med2018$country, name="2018 Medals")
+```
+
+Analysis:
+
+Isolating the 1924 data shows eleven countries receiving medals, with Finland and Norway achieving great success.  The 1976 overlay begins to show a spread of medal winnings across more countries, with East Germany and the Soviet Union at the front.  The 2018 data shows a wide spread of medals across many participant nations (FRG, DGR, TCH, and URS are no longer countries at this time, and the MIX category only existed in the 1924 plot).  The peaks are now forming in the 30 and 40 counts.  Combining the statistics from the pie charts above, once again the countries with Arctic climates are well represented.  In later years, gold medals were won by more countries with greater overall frequency than in earlier years.  This trend corroborates the idea that participation and performance in the Winter Olympics have grown with time.
+
+## Population vs. Samples
+
+### Central Limit Theorem
+
+Do assumptions made to the whole data population apply to random samples?  The Central Limit Theorem states that if a population of data follows a normal distribution (i.e. has a mean and a standard deviation), then random samples of increasing size will be increasingly normally distributed.  In other words, the mean of the samples should approach that of the population, and the standard deviation of the samples should approach the value of the equation: 
+
+Population Standard Deviation : $\sigma_{x}$      
+Sample Standard Deviation: $\sigma_\overline{x}$  
+Sample Size : $n$
+
+$\sigma_\overline{x} = \frac{\sigma_{x}}{\sqrt{n}}$ 
+
+Revisiting the participants per event over the course of all Winter Olympics can demonstrate this relationship.  The data was formed using a tibble to isolate the ‘n_particpants’ column of the Olympic data frame.  Tibble manipulation extracted out the top 10 participated events from the main dataset to use as a method of comparison when checking the sample distribution against the population.  This time, the data is fed into a histogram, with additional line segment traces added to visually represent mean and +/- standard deviations.
+
+```{r echo=T}
+# Plot Series #6 - Central Limit Theorem - Participants per Event
+
+# Frequency comparison between sampling, isolate the top 10 events.
+
+allNum = sum(olympics$n_participants) 
+
+tibble(olympics) %>%
+  select(category, n_participants) %>%
+  group_by(category) %>%
+  summarise(category, allPart = sum(n_participants)) -> topData
+
+rev(sort(unique(topData$allPart)))[1:10] -> topPart
+nameVar = unique(topData$category[topData$allPart == topPart])
+
+top10 = subset(olympics, olympics$category %in% nameVar)
+top10 = subset(top10, !is.na(top10$n_participants))
+allTop10 = sum(top10$n_participants)
+
+# Frequency of top 10, represented in %
+tibble(top10) %>%
+  select(category, n_participants) %>%
+  group_by(category) %>%
+  summarise(category = unique(category), 
+            Population = sum(n_participants)/allTop10*100) %>%
+  #group_by(category, Population=max(Population)) %>%
+  mutate(Event = category, category=NULL) %>%
+  select(Event, Population) -> startData
+
+# Calculate mean and SD of population data.
+meanTib = round(mean(top10$n_participants, na.rm=T), 2)
+sdTib = round(sd(top10$n_participants, na.rm=T), 2)
+
+# Create a plot_ly histogram of the population data.
+plot_ly(top10, type='histogram', x=~n_participants, 
+        name="Participants Per Event") %>%
+  layout(title="Histogram of Participants Per Event", bargap=0.1, 
+         xaxis=list(title="Participant Count", range=c(0,350)),
+         yaxis=list(title="Frequency", range=c(0,100))) %>%
+  add_segments(x=meanTib, y=0, xend=meanTib, yend=180, 
+               name=paste("Mean = ", meanTib)) %>%
+  add_segments(x=c(meanTib+sdTib, meanTib-sdTib), 
+               xend=c(meanTib+sdTib, meanTib-sdTib), y=c(0,0), 
+               yend=c(180,180), name=paste("S.Dev = ", sdTib))
+
+```
+
+Here is the behavior of four sample sizes: 25, 50, 75 and 100.  The mean sampling was taken using normal random selection from a pool of 500 samples of the cumulative participant data, which was extracted again using a tibble isolating down to the ‘n_participants’ category.  
+
+```{r echo=T}
+# Random sampling sizes 20,40,60,80.
+samples=500
+xbar = numeric(samples)
+pop = top10$n_participants
+output = paste0('\nPopulation Mean = ', meanTib, "    Population SD = ", sdTib, "\n\n")
+
+# Acquire sample data of different sizes from sample pool of 500.
+# Create individual plot_ly histograms of sample data and track mean/SD.
+for (i in 1:samples) {
+  xbar[i] = mean(sample(pop, 25, replace = T))
+}
+s1 = plot_ly(x=xbar, type='histogram', name="Participant Sample: 25") %>%
+  layout(xaxis=list(range=c(0,350)), yaxis=list(range=c(0,80)),
+         annotations=list(x=200, y=60, xref='x', yref='y', ax=0, ay=0,
+                          text=paste("<b>Sample: 25\nMean: ", round(mean(xbar),2),
+                                     "\nSD: ", round(sd(xbar), 2))))
+output = c(output, paste0("Sample Size = 25  Mean = ", round(mean(xbar),2)), 
+  "\n Actual SD = ", round(sd(xbar), 2), "Expected SD = ", 
+  round(sdTib/sqrt(25), 2), "\n\n")
+for (i in 1:samples) {
+  xbar[i] = mean(sample(pop, 50, replace = T))
+}
+s2 = plot_ly(x=xbar, type='histogram', name="Participant Sample: 50") %>%
+  layout(xaxis=list(range=c(0,350)), yaxis=list(range=c(0,80), title='Frequency'),
+         annotations=list(x=200, y=60, xref='x', yref='y', ax=0, ay=0,
+                          text=paste("<b>Sample: 50\nMean: ", round(mean(xbar),2),
+                                     "\nSD: ", round(sd(xbar), 2))))
+output = c(output, paste0("Sample Size = 50  Mean = ", round(mean(xbar),2)), 
+           "\n Actual SD = ", round(sd(xbar), 2), "Expected SD = ", 
+           round(sdTib/sqrt(50), 2), "\n\n")
+for (i in 1:samples) {
+  xbar[i] = mean(sample(pop, 75, replace = T))
+}
+s3 = plot_ly(x=xbar, type='histogram', name="Participant Sample: 75") %>%
+  layout(xaxis=list(range=c(0,350), title="Participant Count"),
+         yaxis=list(range=c(0,80)),
+         annotations=list(x=200, y=60, xref='x', yref='y', ax=0, ay=0,
+                          text=paste("<b>Sample: 75\nMean: ", round(mean(xbar),2),
+                                     "\nSD: ", round(sd(xbar), 2))))
+output = c(output, paste0("Sample Size = 75  Mean = ", round(mean(xbar),2)), 
+           "\n Actual SD = ", round(sd(xbar), 2), "Expected SD = ", 
+           round(sdTib/sqrt(75), 2), "\n\n")
+for (i in 1:samples) {
+  xbar[i] = mean(sample(pop, 100, replace = T))
+}
+s4 = plot_ly(x=xbar, type='histogram', name="Participant Sample: 100") %>%
+  layout(xaxis=list(range=c(0,350), title="Participant Count"), 
+         yaxis=list(range=c(0,80), title="Frequency"),
+         annotations=list(x=200, y=60, xref='x', yref='y', ax=0, ay=0,
+                          text=paste("<b>Sample: 100\nMean: ", round(mean(xbar),2),
+                                     "\nSD: ", round(sd(xbar), 2))))
+output = c(output, paste0("Sample Size = 100  Mean = ", round(mean(xbar),2)), 
+           "\n Actual SD = ", round(sd(xbar), 2), "Expected SD = ", 
+           round(sdTib/sqrt(100), 2), "\n\n")
+
+# Plot the results in a 2x2 grid using subplot(). 
+subplot(s1, s2, s3, s4, nrows=2, shareX=F, shareY=T, titleX=T, titleY=T) %>%
+  layout(title="Samples of Participants Per Event", bargap=0.1, showlegend=F)
+```
+
+Analysis:
+
+Keeping the x-axis equal to the population data, each of the plots show a noticeable relationship to the original plot.  The mean of the original data was 50.99 -> ~51 participants per event, which the sampling means closely match.  The standard deviations of the samples follow the expected mathematical calculation shown below.  All sample sizes chosen here make very similar plots, with the only difference being the standard deviation growing smaller.  The greater the sample size, the more data pools within one standard deviation of the mean, creating ever narrower distributions.
+
+```{r echo=F}
+# Display the size/mean/SD output.       
+cat(output)
+```
+
+### Other Sampling Methods
+
+Several other sampling methods exist beyond random normal sampling.  Observe below samples gathered using the following:
+
+*	_Single Random Sampling without Replacement (SRSWOR)_     
+
+Randomly sampling the entire data set for a given number of results.  Each time a sample is taken, the result is omitted from the data set for future samples to eliminate overlap.
+
+*	_Systematic Sampling with Equal Probability (Systematic Equal)_
+
+Dividing the population data into equal segments, the number of which represents the number of samples desired.  A random number is selected within the interval of the data, which represents where in the segment the sample will be drawn uniformly across all segments.  This method may result in null samples returned if the desired sample size is not a factor of the population size.
+
+*	_Systematic Sampling with Unequal Probability (Systematic Unequal)_
+
+Sampling using the inclusionprobabilities() function to set the fractional probability for each element of the population set according to the desired sample size.  Then the UPsystematic() function returns the selected sample indices in binary form to extract from the population data.
+
+*	_Stratified Sampling with Proportional Sizes (Stratified)_
+
+The original dataset is ordered by the size of a ranking category.  Strata size and probability are determined by the proportion of entries versus the whole data.  Based on the weighted probability, sample selections are biased to the strata with larger numbers.
+
+```{r echo=T}
+# Plot Series #7 - Multiple Sampling Methods (sample pool = 100)
+
+library(stats)
+library(sampling)
+# Reuse popSet from above as population data set
+
+output2 = paste0('\nPopulation Mean = ', meanTib, "    Population SD = ", sdTib, "\n\n")
+size=100
+pop = top10$n_participants
+# SRSWOR
+
+s <- srswor(size, length(pop))
+index = (1:length(pop))[s!=0]
+index <- rep(index, s[s != 0])
+sample.1 = pop[index]
+
+# Append to the sampling tracker.
+count = table(top10$category[index])
+startData = mutate(startData, SRSWOR = count)
+
+s5 = plot_ly(x=sample.1, type='histogram', name="SRSWOR Sample Method") %>%
+  layout(xaxis=list(range=c(0,350)), yaxis=list(range=c(0,100), title="Frequency"),
+         annotations=list(x=200, y=60, xref='x', yref='y', ax=0, ay=0,
+                          text=paste("<b>SRSWOR Sampling\nMean: : ", 
+                                     round(mean(sample.1),2),
+                                     "\nSD: ", round(sd(sample.1), 2))));
+output2 = c(output2, paste0("SRSWOR  Mean = ", round(mean(sample.1),2)), 
+           "  Actual SD = ", round(sd(sample.1),2), "\n\n")
+ 
+# Systematic Sampling
+n = size
+k = ceiling(length(pop) / n)
+r = sample(k, 1)
+s <- seq(r, by = k, length = n)
+
+# With systematic sampling, since we used the ceiling function to oversample based
+# on the vector size, there is a chance of obtaining NA sample results.  For the
+# purposes of this project, we will omit those values and adjust mean and SD
+# calculations to the true sample vector size.
+sample.2 = pop[s]
+sample.2 = na.omit(sample.2)
+
+temp = top10$category[s]
+count = table(temp)/sum(table(temp))*100
+startData = mutate(startData, Sys.Equal = count)
+
+s6 = plot_ly(x=sample.2, type='histogram', name="Systematic Equal Sample Method") %>%
+  layout(xaxis=list(range=c(0,350)), yaxis=list(range=c(0,100)),
+         annotations=list(x=200, y=60, xref='x', yref='y', ax=0, ay=0,
+                          text=paste("<b>Systematic Equal Sampling\nMean: ",
+                                     round(mean(sample.2),2),
+                                     "\nSD: ", round(sd(sample.2), 2)))); 
+output2 = c(output2, paste0("Systematic Equal  Mean = ", round(mean(sample.2),2)), 
+            "  Actual SD = ", round(sd(sample.2),2), "\n\n")
+
+# Unequal Systematic Sampling (Inclusion Probability)
+
+pik <- inclusionprobabilities(
+  pop, size); 
+
+s <- UPsystematic(pik)
+sample.3 = pop[s!= 0]
+
+count = table(top10$category[s!=0])
+startData = mutate(startData, Incl.Prob = count)
+
+s7 = plot_ly(x=sample.3, type='histogram', name="Systematic Unequal Sample Method") %>%
+  layout(xaxis=list(range=c(0,350), title="Participant Count"),
+         yaxis=list(range=c(0,100), title="Frequency"),
+         annotations=list(x=200, y=60, xref='x', yref='y', ax=0, ay=0,
+                          text=paste("<b>Systematic Unequal Sampling\nMean: ",
+                                     round(mean(sample.3),2),
+                                     "\nSD: ", round(sd(sample.3), 2)))); 
+output2 = c(output2, paste0("Systematic Unequal  Mean = ", round(mean(sample.3),2)), 
+            "  Actual SD = ", round(sd(sample.3),2), "\n\n")
+
+# Stratified Sampling
+
+tibble(top10) %>%
+  select(category, n_participants) -> popSet2
+
+discRank = 1:length(unique(popSet2$category))
+discSort = rev(sort(table((popSet2$category))))
+names(discRank) = names(discSort)
+popSet2$rank = discRank[popSet2$category]
+subSet = popSet2[order(popSet2$rank), ]
+  
+freq <- rev(sort(table((popSet2$category))))
+
+st.sizes <- size * freq / sum(freq)
+
+# The data was organized and ranked by the number of results with the 17
+# distinct disciplines of events.  There was great disparity in results per
+# discipline, such that some sample strata possessed over 100 entries and others
+# had only 1.  To not get an empty strata error, i used the ceiling() function
+# to guarantee I had minimum one value in the strata.  
+
+st.2 <- strata(subSet, stratanames = c("category"),
+               size = (st.sizes), method = "srswor",
+               description = F)
+
+sample.4 <- getdata(subSet, st.2)$n_participants
+
+count = table(getdata(subSet, st.2)$category)
+startData = mutate(startData, Stratification = count)
+
+s8 = plot_ly(x=sample.4, type='histogram', name="Stratified Sample Method") %>%
+  layout(xaxis=list(range=c(0,350), title="Participant Count"),
+         yaxis=list(range=c(0,100)),
+         annotations=list(x=200, y=60, xref='x', yref='y', ax=0, ay=0,
+                          text=paste("<b>Stratified Sampling\nMean: ", 
+                                     round(mean(sample.4),2),
+                                     "\nSD: ", round(sd(sample.4), 2))));
+output2 = c(output2, paste0("Stratified  Mean = ", round(mean(sample.4),2)), 
+            "  Actual SD = ", round(sd(sample.4),2), "\n\n")
+
+# Plot the results in a 2x2 grid using subplot(). 
+subplot(s5, s6, s7, s8, nrows=2, shareX=F, shareY=T, titleX=T, titleY=T) %>%
+  layout(title="Samples of Participants Per Event, 100 Samples", bargap=0.1,
+         showlegend=F)  
+```
+
+All the sample data created visually resembled the master population plot, demonstrating the viability of using sampling to demonstrate the behavior and trends of an entire data set.  See below for the means and standard deviations of each sampling method. 
+
+```{r echo=F}
+# Display the size/mean/SD output.       
+cat(output2)
+```
+
+### Sampling Analysis
+
+The original plot showed overall distribution of participation per event across all the Olympic years. To determine the degree of success for each sampling method above, a comparison is needed to demonstrate how close the population data ratios are to the sampling data ratios.
+
+```{r echo=F, results='asis'}
+library(knitr)
+library(dplyr)
+library(kableExtra)
+
+startData %>%
+  kable %>%
+  kable_styling("striped") 
+```
+
+The data in the 'Population' column represents what percentages of data were located in a particular event bucket.  The four following columns represent the actual sample percentages located in those events to compare to the population.  Of note, calculating percentages of Sys.Equal (Systematic Sampling with Equal Probability) sampling resulted in decimals.  This was due to the fact that from the nature of that sampling method, it is possible to sample outside the bounds of the population data depending on the random index chosen per the segments.  To compensate, the sum of the actual non-NA samples was used to calculate the percentage rather than assuming 100 samples.  
+
+Most interesting is that the Systematic Sampling with Unequal Probabilities (Incl.Prob) compared the best to the population data. The other methods seemed more random in their sampling distribution.  Visually, disregarding individual event buckets nearly all of the sample plots showed reasonable bells similar to the core data.
+
+The SRSWOR and Stratified Sampling methods compared to the base data reasonably well in terms of the mean and standard deviation.  Systematic unequal sampling using inclusion probabilities  fared the worst in the comparison.  This may be attributed to its resampling loop if all samples were not achieved in the first pass, which biases leading values.
+
+## Conclusion
+
+The growth of the Winter Olympic games is very quantifiable using all of the plot and analysis above.  The observed metrics contributing to this growth are:
+
+* More events existed in later years.
+* More countries participated in later years.
+* Athlete representation by gender began to equalize over time.
+* Top events show a wide distribution in participation.
+* Top events show a wide distribution in participant countries.
+* Medal distribution increased across a greater span of countries over time.
+
+
+
