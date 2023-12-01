@@ -1,0 +1,46 @@
+full_name
+County and state
+county
+county label
+state
+US state
+state_abr
+state abbreviation
+population
+Population (IMLS set, 2019 US Census estimate)
+unemp
+unemployment rate, Bureau of Labor Statistics, spring 2020
+health_ins
+Percent without health insurance, US Census Bureau ACS
+poverty
+Poverty rate, US Census Bureau ACS
+SNAP
+Percent received SNAP, US Census Bureau ACS
+no_comp
+Percent with no home computer, US Census Bureau ACS
+no_internet
+Percent with no home internet, US Census Bureau ACS
+home_broad
+Percent with home broadband, US Census Bureau ACS
+broad_num
+Number of broadband providers, bbn data (from IMLS set)
+broad_avail
+Population for whom broadband is available (%), bbn data (from IMLS set)
+broad_cost
+Lowest cost per month, bbn data (from IMLS set)
+population_bbn
+Population (from BBN set)
+price_bbn
+Lowest broadband cost per month (from BBN set)
+wired_bbn
+Number of Wired (Cable, Copper, DSL, Fiber) providers (from BBN set)
+provide_bbn
+Number of Providers of any technology present in a zip code (BBN set)
+all25_bbn
+Number of Providers (any technology) present in a zip code offering speeds of at least 25 Mbps Download / 3 Mbps Upload
+downave_bbn
+Average Download Speed via M-Lab Speed Tests, rolling 12 months
+access_bbn
+Percent of the Population that has Access to Terrestrial (Wired + Fixed Wireless) Broadband (25 Mbps Download / 3 Mbps Upload)
+slowfrac_bbn
+Fraction of population in zip codes where average download speed is less than 6 Mbps
