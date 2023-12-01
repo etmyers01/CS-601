@@ -1,0 +1,10 @@
+03/01/23
+0001 "Nut" Hardware 12
+0002 "Bolt" Hardware 35
+0003 "Washer" Hardware 17
+0004 "Screw" Hardware 21
+0005 "Hammer" Tool 3
+0006 "Screwdriver" Tool 2
+0007 "Tube of Grease" Lubricant 3
+0008 "Grease Gun" Tool 1
+0009 "Quart of Oil" Lubricant 3

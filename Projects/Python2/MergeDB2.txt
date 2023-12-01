@@ -1,0 +1,10 @@
+08/19/21
+0001 "Lego" Toys 200
+0002 "Bolt" Hardware 35
+0003 "Screw" Hardware 21
+0004 "Hammer" Tool 3
+0005 "Screwdriver" Tool 2
+0006 "Tube of Grease" Lubricant 3
+0007 "Dump Truck" Vehicle 1
+0008 "Quart of Oil" Lubricant 3
+0009 "Car" Vehicle 6
