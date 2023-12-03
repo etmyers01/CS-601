@@ -1,0 +1,39 @@
+{
+    "projects": [
+        {
+            "title": "Inventory Asset Manager",
+            "code_type": "Python, Spyder IDE",
+            "description": "Create an inventory asset manager in base python.  The code utilizes a database and application .py file to run a primary menu loop and formats the output in a readable fashion.",
+            "date": "Summer 2021",
+            "url": "https://etmyers01.github.io/CS-601/Projects/Python2/emyers_final_project.html"
+        },
+        {
+            "title": "Analysis of Winter Olympics Participation between 1924 and 2018",
+            "code_type": "R, RStudio, R Markdown",
+            "description": "Measure the growth of the Winter Olympic games between the years 1924 and 2018 across multiple sets of statistics, including participants, events, countries and population samples.",
+            "date": "Spring 2022",
+            "url": "https://etmyers01.github.io/CS-601/Projects/R/CS544Final_Myers.html"
+        },
+        {
+            "title": "Vehicle Fleet Database",
+            "code_type": "SQL, Microsoft SQL Server",
+            "description": "Create a database that tracks vehicle status, history and maintenance information for a manager of a small vehicle fleet for a local municipality.",
+            "date": "Fall 2022",
+            "url": "https://etmyers01.github.io/CS-601/Projects/SQL/CS669_TermProjectIteration6_Edward_Myers.html"
+        },
+        {
+            "title": "Detail Design for the BestPurchase App",
+            "code_type": "Research Paper",
+            "description": "How do the elements of an activity diagram for a method within the BestPurchase app map one-to-one with lines in its pseudocode?  How does the creation of various forms of design diagrams iteratively add to the understanding of what is needed in a class model?  This report reviews the final steps considered to move the system design of the BestPurchase app towards implementation.",
+            "date": "Fall 2022",
+            "url": "https://etmyers01.github.io/CS-601/Papers/MyersEdward_CS682Assignment6.html"
+        },
+        {
+            "title": "Predicting Broadband Availability of My Local County",
+            "code_type": "Python, Jupyter Notebook",
+            "description": "Create models that identify correlations between geographical census metrics and predict the availability of broadband services (metrics include income, health insurance percentage, poverty level, unemployment, etc).",
+            "date": "Spring 2023",
+            "url": "https://etmyers01.github.io/CS-601/Projects/Python/emyers_final_project.html"
+        }
+    ]
+}
