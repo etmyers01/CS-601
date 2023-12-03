@@ -41,7 +41,9 @@ h1,
 h2,
 h3,
 th,
-ol {
+ol,
+legend,
+#p_url {
     font-family: 'satisfyregular', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -215,6 +217,11 @@ figcaption {
     text-transform: uppercase;
 }
 
+/* id null is a placeholder button space for main nav to center contact button, no use in wide format so display is set to none */
+#null {
+    display: none;
+}
+
 /* current page class, sets active page's button text as white */
 .active-page {
     color: white;
@@ -256,17 +263,66 @@ iframe {
     vertical-align: middle;
 }
 
-/* footer behavior.  center, add padding, set background color and shadow to share continuity with header */
+/* footer behavior. center, add padding, set background color and shadow to share continuity with header */
 footer {
-    padding-top: 10px;
-    padding-bottom: 10px;
     box-shadow: 0 0 5px;
     text-align: center;
+    padding-bottom: 5px;
     background-color: lightgrey;
 }
 
+/* footer margin and padding between <p> elements.  styles JS light/dark mode */
+footer p {
+    margin: 5px;
+    padding: 2px;
+}
+
+/* projects page CSS - styling JSON input */
+
+/* fieldset background color styling */
+fieldset {
+    background-color: rgb(231, 244, 184);
+}
+
+/* bolded fieldset legend */
+legend {
+    font-size: larger;
+    font-weight: bold;
+}
+
+/* styling of project type parameter, blue text, right justified, different font */
+#p_type {
+    text-align: right;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    color:rgba(54, 104, 170, 0.822)
+}
+
+/* styling of project description field, set border, width 80% in full page view, small font and padding */
+#p_desc {
+    border: 1px dashed black;
+    padding: 5px;
+    margin: 5px;
+    width: 80%;
+    font-size: 10pt;
+}
+
+/* styling for url button, set margin and font sizing */
+#p_url {
+    margin: 5px;
+    font-size: larger
+
+
+}
+
+/* styling for description/url button section container, when in full page view, wrap as flex */
+#p_body {
+    display:flex;
+}
+
+
 /* changes to the layout when the screen is at or contracts to 768px */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 900px) {
 
     /* the start content top margin buffer changes to fit the new top nav gridwork 2x3 */
     #start-content {
@@ -277,6 +333,13 @@ footer {
     .main-nav {
         display: grid;
         grid-template-columns: 30% 30% 30%;
+    }
+
+    /* id null is a placeholder button space for main nav to center contact button.
+    it is used to center 'contact' button in grid view mode, so display is enabled but visibility set to none to hold the space */
+    #null {
+        display: block;
+        visibility:hidden;
     }
 
     /* ensures the anchor tags don't try to autosize, but take the full width as dictated by .main-nav container */
@@ -317,6 +380,17 @@ footer {
     th {
         font-size: large;
     }
+
+    /* font size is increased as pixel width decreases, along with width of description box */
+    #p_desc {
+        width: 95%;
+        font-size: 12pt;
+    }
+
+    /* section block holding description and url button changed from flex to block */
+    #p_body {
+        display: block;
+    }
 }
 
 /* changes to the layout when the screen is at or contracts to 400px */
@@ -327,6 +401,11 @@ footer {
         display: flex;
         flex-direction: column;
     }
+    /* id null is a placeholder button space for main nav to center contact button.
+    has no purpose in vertical orientation, so display is set to none */
+    #null {
+        display: none;
+    }
 
     /* the start content top margin buffer changes to fit the new top nav column format */
     #start-content {
@@ -336,6 +415,11 @@ footer {
     /* paragraph text is made larger still for ease of reading in mobile portrait mode */
     p {
         font-size: larger;
+    }
+
+    /* increase font size of project descriptions as screen pixel width narrows */
+    #p_desc {
+        font-size: 14pt;
     }
 }
 

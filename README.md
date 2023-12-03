@@ -6,7 +6,7 @@
 ### Instructions:
 -   All files must stay together in the file directory found in the GitHub repository.  The primary launch page is intended to be index.html
 
-## New Version - Term Project (HTML, CSS, JavaScript, Vue.js, etc.) 11/28/2023 Work in Progress
+## New Version - Term Project (HTML, CSS, JavaScript, Vue.js, etc.) 12/3/2023 Work in Progress
 -   Students will be evaluated on how well they have mastered the following topics:
     -	Web languages 
     -	HTML5
@@ -22,16 +22,15 @@
 -   JavaScript is now utilized to construct header and footer, which make alteration easier across multiple pages without editing HTML.
 -   DOM Manipulation from JS.
     -   JavaScript is used to highlight navigation button corresponding to active page using tag ID comparisons.
-    -   JavaScript is used to highlight table data cells in all tables.
+    -   JavaScript is used to highlight table data cells in all table on mouseover.
+    -   JSON & JavaScript used to dynamically populate work examples to DOM within projects page.
 -   Website live on GitHub Pages (https://etmyers01.github.io/CS-601/)
 -   Code public on GitHub repo (https://github.com/etmyers01/CS-601)
 -   <mark>** Future - Multiple image resolutions to be supported based on viewing window via @media tag.
 -   <mark>** Future - Testing across 3 browsers plus mobile devices. </mark>
--   <mark>** Future - Page 7 - Portfolio work page - papers, examples of SQL database, Python console, Python & R data analysis projects. </mark>
--   <mark>** Future - Fill-form contact sheet and options on contact me page. </mark>
+-   <mark>** Future - Button options on contact me page. </mark>
 
 ### Above & Beyond (across versions)
--   ** Features to come
 
 #### From Version 2
 -   Multiple types of fonts were used across headers and paragraphs to give visual interest.
