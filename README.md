@@ -24,6 +24,9 @@
     -   JavaScript is used to highlight navigation button corresponding to active page using tag ID comparisons.
     -   JavaScript is used to highlight table data cells in all table on mouseover.
     -   JSON & JavaScript used to dynamically populate work examples to DOM within projects page.
+    -   JS setPalette() function used to override color css.
+-   Favicon installed in head of each page
+-   W3C light blue palette .css file employed for continuity (credit: https://www.w3schools.com/lib/w3-theme-light-blue.css)
 -   Website live on GitHub Pages (https://etmyers01.github.io/CS-601/)
 -   Code public on GitHub repo (https://github.com/etmyers01/CS-601)
 -   <mark>** Future - Multiple image resolutions to be supported based on viewing window via @media tag.

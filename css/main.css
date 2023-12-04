@@ -32,7 +32,7 @@ html {
 /* body container.  sets a san-serif font type, removes artifical margin and sets background color */
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-color: rgb(243, 216, 177);
+    /* background-color: rgb(243, 216, 177); replaced by palette */
     display: table-cell;
 }
 
@@ -112,10 +112,11 @@ h2 {
 h3 {
     border: 1px solid black;
     border-top: 4px double black;
-    background-color: #c5d4e2;
+    background-color:#b8e2f3;
     padding: 5px;
     animation-duration: 3s;
     animation-name: slidein-right;
+    font-size: 16pt;
 }
 
 /* top navigation menu and header.  fixed content at top with styling and static when scrolling. */
@@ -182,7 +183,7 @@ figcaption {
 }
 
 /* audio container formatting, center on page with flex position */
-.audio-container {
+#audio-container {
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
@@ -282,12 +283,15 @@ footer p {
 /* fieldset background color styling */
 fieldset {
     background-color: rgb(231, 244, 184);
+    margin-bottom: 10px;
 }
 
 /* bolded fieldset legend */
 legend {
     font-size: larger;
     font-weight: bold;
+    animation-duration: 3s;
+    animation-name: slidein-right;
 }
 
 /* styling of project type parameter, blue text, right justified, different font */
@@ -304,7 +308,7 @@ legend {
     padding: 5px;
     margin: 5px;
     width: 80%;
-    font-size: 10pt;
+    font-size: 12pt;
 }
 
 /* styling for url button, set margin and font sizing */
@@ -401,6 +405,12 @@ legend {
         display: flex;
         flex-direction: column;
     }
+
+    .main-nav a {
+        font-size: larger;
+
+    }
+
     /* id null is a placeholder button space for main nav to center contact button.
     has no purpose in vertical orientation, so display is set to none */
     #null {
@@ -409,7 +419,7 @@ legend {
 
     /* the start content top margin buffer changes to fit the new top nav column format */
     #start-content {
-        padding-top: 250px;
+        padding-top: 300px;
     }
 
     /* paragraph text is made larger still for ease of reading in mobile portrait mode */
