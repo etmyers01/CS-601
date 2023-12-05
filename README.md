@@ -6,7 +6,7 @@
 ### Instructions:
 -   All files must stay together in the file directory found in the GitHub repository.  The primary launch page is intended to be index.html
 
-## New Version - Term Project (HTML, CSS, JavaScript, Vue.js, etc.) 12/3/2023 Work in Progress
+## New Version - Term Project (HTML, CSS, JavaScript, Vue.js, etc.) 12/5/2023 Work in Progress
 -   Students will be evaluated on how well they have mastered the following topics:
     -	Web languages 
     -	HTML5
@@ -23,7 +23,6 @@
 -   DOM Manipulation from JS.
     -   JavaScript is used to highlight navigation button corresponding to active page using tag ID comparisons.
     -   JavaScript is used to highlight table data cells in all table on mouseover.
-    -   JSON & JavaScript used to dynamically populate work examples to DOM within projects page.
     -   JS setPalette() function used to override color css.
 -   Favicon installed in head of each page
 -   W3C light blue palette .css file employed for continuity (credit: https://www.w3schools.com/lib/w3-theme-light-blue.css)
@@ -31,9 +30,10 @@
 -   Code public on GitHub repo (https://github.com/etmyers01/CS-601)
 -   <mark>** Future - Multiple image resolutions to be supported based on viewing window via @media tag.
 -   <mark>** Future - Testing across 3 browsers plus mobile devices. </mark>
--   <mark>** Future - Button options on contact me page. </mark>
 
 ### Above & Beyond (across versions)
+-   JSON & JavaScript w/ fetch is used to dynamically populate work examples to DOM within projects page.
+-   Contacts page has clickable buttons that generate dynamic HTML content, then uses keyframe animations to fade in and out before resetting the HTML.
 
 #### From Version 2
 -   Multiple types of fonts were used across headers and paragraphs to give visual interest.

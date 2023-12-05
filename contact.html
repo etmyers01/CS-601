@@ -36,20 +36,29 @@
 
             <section> <!-- section #1 -->
                 <h3>Professional Sites and Email</h3>
-                <ul class="contacts"> <!-- unorderd list containing external web and email links -->
-                    <li>LinkedIn : <a href="https://www.linkedin.com/in/edward-myers-47873a147/">Click Here</a></li>
-                    <li>GitHub : <a href="https://github.com/etmyers01">Click Here</a></li>
-                    <li>Email : <a href="mailto:emyers01@bu.edu">Click Here</a></li>
-                </ul>
+                <div id="contactBody">
+                    <div id='contactButtons'>
+                        <ul id='cLinks' class="contacts"> <!-- unorderd list containing external web and email link buttons -->
+                            <li><input type="button" onclick='contactText(1)' value="LinkedIn" id="linked_button"></li>
+                            <li><input type="button" onclick='contactText(2)' value="GitHub" id="git_button"></li>
+                            <li><input type="button" onclick='contactText(3)' value="Email" id="email_button"></li>
+                        </ul>
+                    </div>
+                    <div id="flyBox">
+                        <div id="contactPop">
+                            <!-- procedurally-generated HTML goes here -->
+                        </div>
+                    </div>
+                </div>
             </section> <!-- end section 1 -->
 
         </article>
     </main> <!-- end main page-->
-   <!-- footer built in JS -->
-   <script>
-    document.write(getFooter());
-</script>
-<!-- end footer -->
+    <!-- footer built in JS -->
+    <script>
+        document.write(getFooter());
+    </script>
+    <!-- end footer -->
 </body>
 <!-- end body -->
 
