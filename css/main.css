@@ -8,7 +8,7 @@
     - free license
     - multiple formats generated using:
         https://www.fontsquirrel.com/tools/webfont-generator
-*/
+*/   
 @font-face {
     font-family: 'satisfyregular';
     src: url('./fonts/satisfy-regular-webfont.woff2') format('woff2'),
@@ -17,6 +17,15 @@
     font-weight: normal;
     font-style: normal;
 }
+
+/* image sources, based on wide format */
+#pic1{  content: url(../images/adams_ricci_4.jpg); }
+#pic2{  content: url(../images/nature-3316587_1280.jpg); } 
+#pic3{  content: url(../images/graduation-6840941_1280.png); }
+#pic4{  content: url(../images/the-museum-840100_1280.jpg); }
+#pic5{  content: url(../images/wastewater_plant.jpg); } 
+#pic6{  content: url(../images/contact-us-6921414_1280.jpg); }
+#pic7{  content: url(../images/businessman-3213659_1280.jpg); }
 
 /* creative decision to have all content maximums scale no wider than 960px */
 * {
@@ -188,6 +197,12 @@ h3 {
     min-width: 360px;
 }
 
+/* sets image width to 100% within figure element.  height inherit used to keep aspect ratio */
+img {
+    width: 100%;
+    height:inherit;
+} 
+
 /* styling of all figure captions, centered, italic and small text */
 figcaption {
     text-align: center;
@@ -247,11 +262,9 @@ figcaption {
     box-shadow: 0 0 5px blue;
 }
 
-/* hover characteristics over button, turns background white with black text and larger shadow */
+/* hover characteristics over button, creates a large shadow */
 .main-nav a:hover {
-    background-color: rgb(255, 255, 255);
     box-shadow: 0 0 15px;
-    color: black;
 }
 
 /* customization for the iframe map.  override the width to be full viewable area, with margins inherited from figure styling */
@@ -429,6 +442,15 @@ aside a {
 
 /* ~~ changes to the layout when the screen is at or contracts to 600px ~~ */
 @media only screen and (max-width: 600px) { 
+
+    /* image resourcing, to point to lower resolution images */
+    #pic1{  content: url(../images/adams_ricci_4.jpg); }
+    #pic2{  content: url(../images/nature-3316587_640.jpg); } 
+    #pic3{  content: url(../images/graduation-6840941_640.png); }
+    #pic4{  content: url(../images/the-museum-840100_640.jpg); }
+    #pic5{  content: url(../images/wastewater_plant.jpg); } 
+    #pic6{  content: url(../images/contact-us-6921414_640.jpg); }
+    #pic7{  content: url(../images/businessman-3213659_640.jpg); }  
 
     /* the start content top margin buffer changes to fit the new top nav gridwork 2x3 */
     #start-content {

@@ -26,10 +26,11 @@
     -   JS setPalette() function used to override color css.
 -   Favicon installed in head of each page
 -   W3C light blue palette .css file employed for continuity (credit: https://www.w3schools.com/lib/w3-theme-light-blue.css)
+-   Multiple image resolutions supported based on viewing window via @media tag.  All original images upon load are individually sized, alt tagged and src set prior to CSS styling.
 -   Website live on GitHub Pages (https://etmyers01.github.io/CS-601/)
 -   Code public on GitHub repo (https://github.com/etmyers01/CS-601)
--   <mark>** Future - Multiple image resolutions to be supported based on viewing window via @media tag.
--   <mark>** Future - Testing across 3 browsers plus mobile devices. </mark>
+
+-   <mark>Testing across 3 browsers plus mobile devices is ongoing. </mark>
 
 ### Above & Beyond (across versions)
 -   JSON & JavaScript w/ fetch is used to dynamically populate work examples to DOM within projects page.
