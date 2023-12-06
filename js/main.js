@@ -7,18 +7,45 @@
 window.onload = startUp;
 
 function startUp() {
-
     setActivePage();        // sets menu button active page highlight on navigation menu
     highLighter();          // creates cell highlighting on individual table cells
     setPalette();           // sets CSS color palette override
-
 }
-
 
 // acquire page elements for manipulation
 const currPage = document.getElementsByTagName('title');        // title tag (only one at currPage[0])
 const anchorList = document.getElementsByTagName('a');          // anchor tags
 const tableStyle = document.getElementsByTagName('td');         // all table data cells
+
+// API JSON fetch
+async function getApi(localURL, place)
+{
+  const response = await fetch(localURL);   // ask for data
+  const data = await response.json();       // await data
+
+  writeApi(data, place);        // data received as an array of quotes/authors
+}
+
+// API quote writer
+function writeApi(localData, place) {
+
+    // establish place to insert quote
+    const qArea = document.getElementById(place);
+    // create random index
+    const index = Math.floor(Math.random() * localData.length); 
+    
+    // - some string manipulation was needed to remove unwanted characters
+    let author = (localData[index].author)
+    author = author.replace(', type.fit', '');
+    author = author.replace('type.fit', 'Unknown');
+
+    // update DOM using ES6 blockquote
+    qArea.innerHTML += 
+    `<blockquote>
+        <p>${localData[index].text}</p>
+        <div>--${author}</div>
+    <blockquote>`;
+}
 
 // sets overriding css color palette
 function setPalette() {
@@ -59,6 +86,26 @@ function setPalette() {
     }
 }
 
+// mini menu generator for mobile view.  fires on button submit.
+function miniMenu () {
+    // get access to main navigation container and mobile nav click button
+    const mainNav = document.getElementById('main-nav');
+    const mobileNav = document.getElementById('smallMenu');
+
+    // the mobile button has a class value of open or closed to determine mobile menu visibility
+    // if button is clicked and menu is 'closed', menu appears in column form
+    if (mobileNav.className == 'closed')    {
+        mainNav.style.display = 'flex';
+        mainNav.style.flexDirection = 'column';
+        mobileNav.className = 'open';
+    }
+    // if button is clicked and menu is 'open', make it go away
+    else {
+        mainNav.style.display = 'none';
+        mobileNav.className = 'closed';
+    }
+}
+
 function contactText(option) {
 
     // to perform a fresh animation, we need to remove and re-add the element to the node tree
@@ -68,7 +115,6 @@ function contactText(option) {
 
     const flyText = document.getElementById('contactPop');      // reacquire element
 
-    //flyText.style.display = 'none';
     let outputHTML = '';
 
     switch (option) {
@@ -194,8 +240,11 @@ function getHeader() {
     
     <header> <!-- main navigation -->
         <div id="nav-header">
-            <h1>The Good Things</h1>
-            <nav class="main-nav">
+            <div id="hdrCont">
+                <button onclick="miniMenu()" id="smallMenu" class="closed" value='' ></button>
+                <h1>The Good Things</h1>
+            </div>
+            <nav class="main-nav" id="main-nav">
                 <a id='home' class='w3-theme-l1' href="./index.html">Home</a>
                 <a id='about' class='w3-theme-l1' href="./about.html">About Me</a>
                 <a id='location' class='w3-theme-l1' href="./location.html">My Backyard</a>

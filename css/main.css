@@ -36,14 +36,16 @@ body {
     display: table-cell;
 }
 
-/* font specification for h1, h2,h3, table and ol headers.  custom font is first priority, with a failback of several fonts in the san-serif family. */
+/* font specification for many headers, legends, and leading elements for continuity.  
+custom font is first priority, with a failback of several fonts in the san-serif family. */
 h1,
 h2,
 h3,
 th,
 ol,
 legend,
-#p_url {
+#p_url,
+blockquote div {
     font-family: 'satisfyregular', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -51,6 +53,10 @@ legend,
 li p {
     display: inline;
     font: normal 1em 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#smallMenu {
+    display: none;
 }
 
 /* unordered list bullets styled to use morterboard emoji for about me page */
@@ -285,7 +291,7 @@ footer p {
     padding: 2px;
 }
 
-/* projects page CSS - styling JSON input */
+/* ~~ projects page CSS - styling JSON input ~~ */
 
 /* fieldset background color styling */
 fieldset {
@@ -304,7 +310,8 @@ legend {
 /* styling of project type parameter, blue text, right justified, different font */
 #p_type,
 h4, 
-li input {
+li input,
+blockquote {
     text-align: right;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bolder;
@@ -331,7 +338,7 @@ li input {
     display: flex;
 }
 
-/* styling for contact page buttons and fade-in dynamic HTML */
+/* ~~ styling for contact page buttons and fade-in dynamic HTML ~~ */
 
 /* contact buttons container on contact page */
 #contactButtons {
@@ -374,7 +381,7 @@ h5 {
     font-size:large;
 }
 
-/* fade tect wrapped in aside tags. */
+/* ~~ fade text on contact page wrapped in aside tags. ~~ */
 
 /* paragraph styling sets margin & font size */
 aside p {
@@ -387,13 +394,12 @@ aside a {
     display: block;
 }
 
-
-/* changes to the layout when the screen is at or contracts to 768px */
+/* ~~ changes to the layout when the screen is at or contracts to 900px ~~ */
 @media only screen and (max-width: 900px) {
 
     /* the start content top margin buffer changes to fit the new top nav gridwork 2x3 */
     #start-content {
-        padding-top: 150px;
+        padding-top: 180px;
     }
 
     /* the top nav switches from inline to grid, autosizing so that all columms add up to screen width */
@@ -421,8 +427,31 @@ aside a {
     }
 }
 
-/* changes to the layout when the screen is at or contracts to 600px */
-@media only screen and (max-width: 600px) {
+/* ~~ changes to the layout when the screen is at or contracts to 600px ~~ */
+@media only screen and (max-width: 600px) { 
+
+    /* the start content top margin buffer changes to fit the new top nav gridwork 2x3 */
+    #start-content {
+        padding-top: 150px;
+    }
+
+    /* the top nav switches from inline to grid, autosizing so that all columms add up to screen width */
+    .main-nav {
+        display: grid;
+        grid-template-columns: 30% 30% 30%;
+    }
+
+    /* id null is a placeholder button space for main nav to center contact button.
+    it is used to center 'contact' button in grid view mode, so display is enabled but visibility set to none to hold the space */
+    #null {
+        display: block;
+        visibility:hidden;
+    }
+
+    /* ensures the anchor tags don't try to autosize, but take the full width as dictated by .main-nav container */
+    .main-nav a {
+        width: 100%
+    }
 
     /* the lead heading font size becomes variable, shrinking to no less than 10pt, but then fitting the window*/
     h1 {
@@ -460,18 +489,52 @@ aside a {
     }
 }
 
-/* changes to the layout when the screen is at or contracts to 400px */
+/* ~~ changes to the layout when the screen is at or contracts to 400px ~~ */
 @media only screen and (max-width: 400px) {
 
-    /* top nav now switches to flex vertical column orientation due to narrow width */
-    .main-nav {
-        display: flex;
-        flex-direction: column;
+    /* the lead heading font size becomes variable, shrinking to no less than 10pt, but then fitting the window*/
+    h1 {
+        font-size: calc(10pt + 4vw);
+        text-align: center;
+        margin-top: auto;
     }
 
+    /* top nav now switches to flex vertical column orientation due to narrow width */
+    h1 {
+        vertical-align: middle;
+    } 
+
+    /* ~~ styling for hamburger menu button.  only shows when screen at 400px or less ~~ */
+    
+    /* header container, holds hamburger menu button and title header */
+    #hdrCont {
+        display:flex;
+        padding: 0;
+        text-align: center;
+    }
+
+    /* hamburger menu button. uses clover favicon as background with styling */
+    #smallMenu {
+        display: inline;
+        margin: 8px;
+        margin-right: 15px;
+        margin-bottom: 0;
+        height: 50px;
+        width: 50px;
+        background-image: url("../images/favicon.png");
+        background-size: cover;
+        box-shadow: 0 0 15px;
+    }
+    
+    /* set main nav buttons to no display.  controlled with JS */
+    .main-nav {
+        display: none;
+    }
+
+    /* enlarge font size for main navigation at small resolution */
     .main-nav a {
         font-size: larger;
-
+        width: 100%;
     }
 
     /* id null is a placeholder button space for main nav to center contact button.
@@ -482,7 +545,7 @@ aside a {
 
     /* the start content top margin buffer changes to fit the new top nav column format */
     #start-content {
-        padding-top: 300px;
+        padding-top: 70px;
     }
 
     /* paragraph text is made larger still for ease of reading in mobile portrait mode */
@@ -495,35 +558,43 @@ aside a {
         font-size: 14pt;
     }
 
+    /* ~~ contact page narrow styling ~~ */
+
     /* contact buttons container on contact page */
     #contactBody {
         flex-direction: column;
         margin-right:10px;
     }
-
+    /* contact buttons container on contact page */
     #contactButtons {
         width: 100%;
         margin: 0px;
     }
-
+    
+    /* for narrow width, transform list to inline and adjust spacing */
     #cLinks li {
         display: inline;
         list-style-type: none;
-        
         margin-left: -.5em;
 	    margin-right: -.5em;
-        
     }
 
+    /* restyle buttons at narrow width */
     li input {
         width:90px;
         font-size: 12pt;
     }
 
+    /* enlarge text at narrow width */
     aside p,
     aside a {
         margin: 5px;
         font-size: 14pt;
+    }
+
+    /* blockquote centering */
+    blockquote {
+        text-align: center;
     }
 }
 

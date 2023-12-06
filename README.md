@@ -34,6 +34,9 @@
 ### Above & Beyond (across versions)
 -   JSON & JavaScript w/ fetch is used to dynamically populate work examples to DOM within projects page.
 -   Contacts page has clickable buttons that generate dynamic HTML content, then uses keyframe animations to fade in and out before resetting the HTML.
+-   Mobile hamburger button created for viewing on mobile devices to enable and collapse main navigation
+-   Quote API utilized to create random quote on the contacts page
+    - credit : https://forum.freecodecamp.org/t/free-api-inspirational-quotes-json-with-code-examples/311373
 
 #### From Version 2
 -   Multiple types of fonts were used across headers and paragraphs to give visual interest.

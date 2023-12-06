@@ -51,6 +51,16 @@
                     </div>
                 </div>
             </section> <!-- end section 1 -->
+            <section> <!-- section #3 --> 
+                <h3>Inspirational Quote</h3>
+                <div id="content-api">
+                    <!-- API goes here, inserted via JS -->
+                </div>
+                <script>
+                    getApi("https://type.fit/api/quotes", 'content-api');
+                    // credit : https://forum.freecodecamp.org/t/free-api-inspirational-quotes-json-with-code-examples/311373
+                </script>
+            </section>
 
         </article>
     </main> <!-- end main page-->
