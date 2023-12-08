@@ -8,7 +8,7 @@
     - free license
     - multiple formats generated using:
         https://www.fontsquirrel.com/tools/webfont-generator
-*/   
+*/
 @font-face {
     font-family: 'satisfyregular';
     src: url('./fonts/satisfy-regular-webfont.woff2') format('woff2'),
@@ -19,13 +19,33 @@
 }
 
 /* image sources, based on wide format */
-#pic1{  content: url(../images/adams_ricci_4.jpg); }
-#pic2{  content: url(../images/nature-3316587_1280.jpg); } 
-#pic3{  content: url(../images/graduation-6840941_1280.png); }
-#pic4{  content: url(../images/the-museum-840100_1280.jpg); }
-#pic5{  content: url(../images/wastewater_plant.jpg); } 
-#pic6{  content: url(../images/contact-us-6921414_1280.jpg); }
-#pic7{  content: url(../images/businessman-3213659_1280.jpg); }
+#pic1 {
+    content: url(../images/adams_ricci_4.jpg);
+}
+
+#pic2 {
+    content: url(../images/nature-3316587_1280.jpg);
+}
+
+#pic3 {
+    content: url(../images/graduation-6840941_1280.png);
+}
+
+#pic4 {
+    content: url(../images/the-museum-840100_1280.jpg);
+}
+
+#pic5 {
+    content: url(../images/wastewater_plant.jpg);
+}
+
+#pic6 {
+    content: url(../images/contact-us-6921414_1280.jpg);
+}
+
+#pic7 {
+    content: url(../images/businessman-3213659_1280.jpg);
+}
 
 /* creative decision to have all content maximums scale no wider than 960px */
 * {
@@ -117,10 +137,20 @@ h1 {
 
 /* keyframe animation: fade in and out.  used for contact aside dynamic HTML */
 @keyframes fade {
-    0%, 100% { opacity: 0 }
-    20% { opacity: 1 }
-    80% { opacity: 1 }
-  }
+
+    0%,
+    100% {
+        opacity: 0
+    }
+
+    20% {
+        opacity: 1
+    }
+
+    80% {
+        opacity: 1
+    }
+}
 
 /* custom sizing for h2.  specified larger sizing for emphasis and enabled animation */
 h2 {
@@ -134,8 +164,9 @@ h2 {
 h3 {
     border: 1px solid black;
     border-top: 4px double black;
-    background-color:#b8e2f3;
+    background-color: #b8e2f3;
     padding: 5px;
+    padding-left: 20px;
     animation-duration: 3s;
     animation-name: slidein-right;
     font-size: 16pt;
@@ -154,8 +185,8 @@ h3 {
 
 /* gives paragraph content a small margin for aesthetic purposes */
 p {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 /* table style formatting: backgroudn color, auto margins to center, border */
@@ -200,8 +231,8 @@ h3 {
 /* sets image width to 100% within figure element.  height inherit used to keep aspect ratio */
 img {
     width: 100%;
-    height:inherit;
-} 
+    height: inherit;
+}
 
 /* styling of all figure captions, centered, italic and small text */
 figcaption {
@@ -322,13 +353,13 @@ legend {
 
 /* styling of project type parameter, blue text, right justified, different font */
 #p_type,
-h4, 
+h4,
 li input,
 blockquote {
     text-align: right;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bolder;
-    color:rgba(37, 64, 100, 0.822)
+    color: rgba(37, 64, 100, 0.822)
 }
 
 /* styling of project description field, set border, width 80% in full page view, small font and padding */
@@ -366,16 +397,16 @@ blockquote {
 }
 
 /* list input styling on content page */
-li > input {
+li>input {
     width: 100%;
-    text-align:center;
+    text-align: center;
 }
 
 /* contact page text body container to accept flex display molding */
 #flyBox {
-   width: 100%;
-   margin-left: 20px;
-   margin-right: 10px;
+    width: 100%;
+    margin-left: 20px;
+    margin-right: 10px;
 }
 
 /* dynamic html area to receive JS html content and fade animatiom */
@@ -391,7 +422,7 @@ h4,
 h5 {
     margin-top: 5px;
     margin-bottom: 5px;
-    font-size:large;
+    font-size: large;
 }
 
 /* ~~ fade text on contact page wrapped in aside tags. ~~ */
@@ -425,7 +456,7 @@ aside a {
     it is used to center 'contact' button in grid view mode, so display is enabled but visibility set to none to hold the space */
     #null {
         display: block;
-        visibility:hidden;
+        visibility: hidden;
     }
 
     /* ensures the anchor tags don't try to autosize, but take the full width as dictated by .main-nav container */
@@ -441,16 +472,36 @@ aside a {
 }
 
 /* ~~ changes to the layout when the screen is at or contracts to 600px ~~ */
-@media only screen and (max-width: 600px) { 
+@media only screen and (max-width: 600px) {
 
     /* image resourcing, to point to lower resolution images */
-    #pic1{  content: url(../images/adams_ricci_4.jpg); }
-    #pic2{  content: url(../images/nature-3316587_640.jpg); } 
-    #pic3{  content: url(../images/graduation-6840941_640.png); }
-    #pic4{  content: url(../images/the-museum-840100_640.jpg); }
-    #pic5{  content: url(../images/wastewater_plant.jpg); } 
-    #pic6{  content: url(../images/contact-us-6921414_640.jpg); }
-    #pic7{  content: url(../images/businessman-3213659_640.jpg); }  
+    #pic1 {
+        content: url(../images/adams_ricci_4.jpg);
+    }
+
+    #pic2 {
+        content: url(../images/nature-3316587_640.jpg);
+    }
+
+    #pic3 {
+        content: url(../images/graduation-6840941_640.png);
+    }
+
+    #pic4 {
+        content: url(../images/the-museum-840100_640.jpg);
+    }
+
+    #pic5 {
+        content: url(../images/wastewater_plant.jpg);
+    }
+
+    #pic6 {
+        content: url(../images/contact-us-6921414_640.jpg);
+    }
+
+    #pic7 {
+        content: url(../images/businessman-3213659_640.jpg);
+    }
 
     /* the start content top margin buffer changes to fit the new top nav gridwork 2x3 */
     #start-content {
@@ -467,7 +518,7 @@ aside a {
     it is used to center 'contact' button in grid view mode, so display is enabled but visibility set to none to hold the space */
     #null {
         display: block;
-        visibility:hidden;
+        visibility: hidden;
     }
 
     /* ensures the anchor tags don't try to autosize, but take the full width as dictated by .main-nav container */
@@ -483,6 +534,7 @@ aside a {
     /* changes the section headers alignment to center for easier viewing at narrow width */
     h3 {
         text-align: center;
+        padding: 0;
     }
 
     /* the treatment of images within figure tags changes, eliminating the side margin to show more picture at smaller res */
@@ -524,13 +576,30 @@ aside a {
     /* top nav now switches to flex vertical column orientation due to narrow width */
     h1 {
         vertical-align: middle;
-    } 
+    }
 
     /* ~~ styling for hamburger menu button.  only shows when screen at 400px or less ~~ */
-    
+
+    /* nav header styling when class=closed (makes mobile menu disappear) */
+    #nav-header.closed {
+        #main-nav {
+            display: none;
+        }
+    }
+
+    /* nav header styling when class=open (makes mobile menu appear) */
+    #nav-header.open {
+        #main-nav {
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            text-align: center;
+        }
+    }
+
     /* header container, holds hamburger menu button and title header */
     #hdrCont {
-        display:flex;
+        display: flex;
         padding: 0;
         text-align: center;
     }
@@ -546,11 +615,6 @@ aside a {
         background-image: url("../images/favicon.png");
         background-size: cover;
         box-shadow: 0 0 15px;
-    }
-    
-    /* set main nav buttons to no display.  controlled with JS */
-    .main-nav {
-        display: none;
     }
 
     /* enlarge font size for main navigation at small resolution */
@@ -575,6 +639,12 @@ aside a {
         font-size: larger;
     }
 
+    /* ieldset legend */
+    legend {
+        font-size: 16pt;
+        font-weight: bold;
+    }
+
     /* increase font size of project descriptions as screen pixel width narrows */
     #p_desc {
         font-size: 14pt;
@@ -585,26 +655,37 @@ aside a {
     /* contact buttons container on contact page */
     #contactBody {
         flex-direction: column;
-        margin-right:10px;
+        margin-right: 10px;
     }
+
     /* contact buttons container on contact page */
     #contactButtons {
         width: 100%;
         margin: 0px;
     }
-    
+
     /* for narrow width, transform list to inline and adjust spacing */
     #cLinks li {
-        display: inline;
+        display: block;
         list-style-type: none;
         margin-left: -.5em;
-	    margin-right: -.5em;
+        margin-right: -.5em;
     }
 
     /* restyle buttons at narrow width */
     li input {
-        width:90px;
-        font-size: 12pt;
+        width: 80%;
+        height: 32px;
+        margin-bottom: 5px;
+        font-size: 14pt;
+        border-radius: 5px;
+        text-decoration: none;
+        border: 1px solid grey;
+        font-family: 'Courier New', Courier, monospace;
+        padding: 5px;
+        background-color: #69c2e6;
+        box-shadow: 0 0 5px;
+        font-weight: bolder;
     }
 
     /* enlarge text at narrow width */
@@ -612,6 +693,22 @@ aside a {
     aside a {
         margin: 5px;
         font-size: 14pt;
+    }
+
+    /* styling to adjust projects url buttons in narrow mode */
+    #p_url {
+        margin: 5px;
+        font-size: larger;
+        border-radius: 5px;
+        text-decoration: none;
+        border: 1px solid grey;
+        font-family: 'Courier New', Courier, monospace;
+        padding: px;
+        background-color: #69c2e6;
+        box-shadow: 0 0 5px;
+        font-weight: bolder;
+        width: 98%;
+
     }
 
     /* blockquote centering */
@@ -632,7 +729,7 @@ aside a {
     img {
         max-width: 500px;
     }
-    
+
     /* changes gallery flexbox to single column orientation */
     .pic_column {
         flex: 100%;
@@ -641,20 +738,21 @@ aside a {
 
     /* changes font to serif style for easier paper reading */
     p {
-        font-family:'Times New Roman', Times, serif;
+        font-family: 'Times New Roman', Times, serif;
         font-size: 10pt;
     }
 
     /* hiding header and footer in print mode */
-    header, footer {
+    header,
+    footer {
         display: none;
     }
 
     /* broadening article to full width of page */
     article {
-        width:100%;
-        padding:0;
-        margin:0;
+        width: 100%;
+        padding: 0;
+        margin: 0;
     }
 
     /* setting print margins on page */
@@ -665,7 +763,7 @@ aside a {
     /* inserts full link after anchor text if href exists */
     @media print {
         a:after {
-          content: " ("attr(href)")";
+            content: " (" attr(href)")";
         }
     }
 

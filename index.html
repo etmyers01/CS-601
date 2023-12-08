@@ -5,9 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.0/vue.global.min.js"
+        integrity="sha512-FoPuJUwBEL6FkeJZcmV/zTgUQO2G/feesn8dgFmYYJMZZZInQ2Oqfeeo02hYfKHjwGWZdcK5afJaY0VDK8Fatw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" type="text/css" href="./css/main.css">
     <script src="./js/main.js"></script>
+    <script src="./js/vue.js" defer></script>
     <title id="home">The Good Things</title>
     <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
     <link rel=“shortcut icon” href=“./images/favicon.ico” type=“image/x-icon”>
@@ -17,18 +20,18 @@
 <!-- begin Body -->
 
 <body>
-    <!-- header navigation built in JS -->
-    <script>
-        document.write(getHeader());
-    </script>
+    <!-- begin header -->
+    <header id="header_app">
+        <!-- header navigation built in Vue JS -->
+    </header>
     <!-- end header-->
     <main> <!-- begin main page -->
 
         <article id="start-content">
 
-             <header> <!-- subheader -->
+            <header> <!-- subheader -->
                 <h2>The Many Facets of Ed</h2>
-             </header> 
+            </header>
 
             <section> <!-- section #1 -->
                 <h3>My Hometown - East Pennsboro Township</h3>
@@ -42,10 +45,16 @@
                 <h3>Welcome to my page!</h3>
                 <p>Throughout the sections of my website, you will:</p>
                 <ol> <!-- ordered list -->
-                    <li><p>Get to know my background and family.</p></li>
-                    <li><p>Learn about my home, East Pennsboro Township, and its cool places.</p></li>
-                    <li><p>See what I have accomplished towards my Online Masters Degree in Computer Information
-                        Systems.</p></li>
+                    <li>
+                        <p>Get to know my background and family.</p>
+                    </li>
+                    <li>
+                        <p>Learn about my home, East Pennsboro Township, and its cool places.</p>
+                    </li>
+                    <li>
+                        <p>See what I have accomplished towards my Online Masters Degree in Computer Information
+                            Systems.</p>
+                    </li>
                 </ol>
             </section> <!-- end section 2-->
 
@@ -64,11 +73,10 @@
 
         </article>
     </main> <!-- end main page-->
-
-    <!-- footer built in JS -->
-    <script>
-        document.write(getFooter());
-    </script>
+    <!-- begin footer -->
+    <footer id="footer_app">
+        <!-- footer built in Vue JS -->
+    </footer>
     <!-- end footer -->
 </body>
 <!-- end body -->

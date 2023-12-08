@@ -5,9 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.0/vue.global.min.js"
+        integrity="sha512-FoPuJUwBEL6FkeJZcmV/zTgUQO2G/feesn8dgFmYYJMZZZInQ2Oqfeeo02hYfKHjwGWZdcK5afJaY0VDK8Fatw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" type="text/css" href="./css/main.css">
     <script src="./js/main.js"></script>
+    <script src="./js/vue.js" defer></script>
     <title id="location">The Good Things</title>
     <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
     <link rel=“shortcut icon” href=“./images/favicon.ico” type=“image/x-icon”>
@@ -17,10 +20,10 @@
 <!-- begin Body -->
 
 <body>
-    <!-- header navigation built in JS -->
-    <script>
-        document.write(getHeader());
-    </script>
+    <!-- begin header -->
+    <header id="header_app">
+        <!-- header navigation built in Vue JS -->
+    </header>
     <!-- end header-->
     <main> <!-- begin main page -->
 
@@ -48,7 +51,8 @@
                 <h3>Where I Work</h3>
 
                 <figure> <!-- secondary img -->
-                    <img id='pic5' src="./images/wastewater_plant.jpg" alt="East Pennsboro Wastewater Treatment Plant" width="640" height="193">
+                    <img id='pic5' src="./images/wastewater_plant.jpg" alt="East Pennsboro Wastewater Treatment Plant"
+                        width="640" height="193">
                     <figcaption>East Pennsboro Wastewater Treatment Plant - Source: East Pennsboro Township</figcaption>
                 </figure>
 
@@ -63,17 +67,20 @@
                     </tr>
                     <tr>
                         <td class="first-col"><b>Wastewater Superintendent</b></td>
-                        <td class="second-col">Manage personnel and equipment at the Township's wastewater treatment plant and collecting
+                        <td class="second-col">Manage personnel and equipment at the Township's wastewater treatment
+                            plant and collecting
                             pumping stations.</td>
                     </tr>
                     <tr>
                         <td class="first-col"><b>Stormwater Coordinator</b></td>
-                        <td class="second-col">Keep an inventory of the Township's stormwater assets and activities, while maintaining
+                        <td class="second-col">Keep an inventory of the Township's stormwater assets and activities,
+                            while maintaining
                             compliance with the PA Department of Environmental Protection stormwater permit.</td>
                     </tr>
                     <tr>
                         <td class="first-col"><b>IT Specialist</b></td>
-                        <td class="second-col">Plan maintenance and upgrades on tech assets across all Township work sites, along with
+                        <td class="second-col">Plan maintenance and upgrades on tech assets across all Township work
+                            sites, along with
                             project management, working with vendors and balancing a spending budget.</td>
                     </tr>
 
@@ -100,10 +107,9 @@
         </article>
     </main> <!-- end main page -->
     <!-- begin footer -->
-    <!-- footer built in JS -->
-    <script>
-        document.write(getFooter());
-    </script>
+    <footer id="footer_app">
+        <!-- footer built in Vue JS -->
+    </footer>
     <!-- end footer -->
 </body>
 <!-- end body -->

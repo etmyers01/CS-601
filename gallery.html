@@ -5,9 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.0/vue.global.min.js"
+        integrity="sha512-FoPuJUwBEL6FkeJZcmV/zTgUQO2G/feesn8dgFmYYJMZZZInQ2Oqfeeo02hYfKHjwGWZdcK5afJaY0VDK8Fatw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" type="text/css" href="./css/main.css">
     <script src="./js/main.js"></script>
+    <script src="./js/vue.js" defer></script>
     <title id="gallery">The Good Things</title>
     <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
     <link rel=“shortcut icon” href=“./images/favicon.ico” type=“image/x-icon”>
@@ -17,10 +20,10 @@
 <!-- begin Body -->
 
 <body>
-    <!-- header navigation built in JS -->
-    <script>
-        document.write(getHeader());
-    </script>
+    <!-- begin header -->
+    <header id="header_app">
+        <!-- header navigation built in Vue JS -->
+    </header>
     <!-- end header-->
     <main> <!-- begin main page -->
         <article id="start-content">
@@ -29,7 +32,8 @@
                 <h2>Gallery</h2>
 
                 <figure> <!-- banner img-->
-                    <img id='pic4' src="./images/the-museum-840100_640.jpg" alt="Picture Gallery"  width="640" height="427">
+                    <img id='pic4' src="./images/the-museum-840100_640.jpg" alt="Picture Gallery" width="640"
+                        height="427">
                     <figcaption>Picture Gallery - Source: Pixabay Free License</figcaption>
                 </figure>
 
@@ -40,13 +44,15 @@
                 <div class="pic_row">
                     <div class="pic_column">
                         <figure> <!-- Image #1 -->
-                            <img id='pic1' src="./images/adams_ricci_4.jpg" alt="Adams-Ricci Park" width="640" height="294">
+                            <img id='pic1' src="./images/adams_ricci_4.jpg" alt="Adams-Ricci Park" width="640"
+                                height="294">
                             <figcaption>Adams-Ricci Park - Source: East Pennsboro Township <br>Source Link : <a
                                     href="https://eastpennsboro.net">Click Here</a></figcaption>
                         </figure>
 
                         <figure> <!-- Image #2-->
-                            <img id='pic2' src="./images/nature-3316587_1280.jpg" alt="Picture of Park Swings" width="640" height="427">
+                            <img id='pic2' src="./images/nature-3316587_1280.jpg" alt="Picture of Park Swings"
+                                width="640" height="427">
                             <figcaption>Picture of Park Swings - Source: Pixabay Free License <br>Source Link : <a
                                     href="https://pixabay.com/photos/nature-kids-swings-children-summer-3316587/">Click
                                     Here</a></figcaption>
@@ -54,14 +60,16 @@
                     </div>
                     <div class="pic_column">
                         <figure> <!-- Image #3 -->
-                            <img id='pic3' src="./images/graduation-6840941_640.png" alt="Taking Steps Toward Graduation" width="640" height="458">
+                            <img id='pic3' src="./images/graduation-6840941_640.png"
+                                alt="Taking Steps Toward Graduation" width="640" height="458">
                             <figcaption>Taking Steps Towards Graduation - Source: Pixabay Free License <br> Source Link
                                 : <a href="https://pixabay.com/vectors/graduation-success-books-diploma-6840941/">Click
                                     Here</a></figcaption>
                         </figure>
 
                         <figure> <!-- Image #4 -->
-                            <img id='pic4' src="./images/the-museum-840100_1280.jpg" alt="Picture Gallery" width="640" height="427">
+                            <img id='pic4' src="./images/the-museum-840100_1280.jpg" alt="Picture Gallery" width="640"
+                                height="427">
                             <figcaption>Picture Gallery - Source: Pixabay Free License <br> Source Link : <a
                                     href="https://pixabay.com/photos/the-museum-images-painting-gallery-840100/	">Click
                                     Here</a></figcaption>
@@ -69,7 +77,8 @@
                     </div>
                     <div class="pic_column">
                         <figure> <!-- Image #5 -->
-                            <img id='pic5' src="./images/wastewater_plant.jpg" alt="East Pennsboro Wastewater Treatment Plant" width="640" height="193">
+                            <img id='pic5' src="./images/wastewater_plant.jpg"
+                                alt="East Pennsboro Wastewater Treatment Plant" width="640" height="193">
                             <figcaption>East Pennsboro Wastewater Treatment Plant - Source: East Pennsboro Township <br>
                                 Source Link : <a
                                     href="https://eastpennsboro.net/departments/public_works/wastewater/index.php">Click
@@ -77,7 +86,8 @@
                         </figure>
 
                         <figure> <!-- Image #6 -->
-                            <img id='pic6' src="./images/contact-us-6921414_1280.jpg" alt="Contact Us" width="640" height="243">
+                            <img id='pic6' src="./images/contact-us-6921414_1280.jpg" alt="Contact Us" width="640"
+                                height="243">
                             <figcaption>Contact Us - Source: Pixabay Free License <br> Source Link : <a
                                     href="https://pixabay.com/photos/contact-us-banner-email-business-6921414/">Click
                                     Here</a></figcaption>
@@ -86,10 +96,11 @@
                     <div class="pic_column">
 
                         <figure> <!-- Image #7 -->
-                            <img id = 'pic7' src="./images/businessman-3213659_1280.jpg" alt="Project List" width="640" height="237">
+                            <img id='pic7' src="./images/businessman-3213659_1280.jpg" alt="Project List" width="640"
+                                height="237">
                             <figcaption>Project List - Source: Pixabay Free License <br> Source Link : <a
-                                href="https://pixabay.com/photos/businessman-tablet-steering-city-3213659/">Click
-                                Here</a></figcaption>
+                                    href="https://pixabay.com/photos/businessman-tablet-steering-city-3213659/">Click
+                                    Here</a></figcaption>
                         </figure>
 
                     </div>
@@ -99,10 +110,10 @@
 
         </article>
     </main> <!-- end main page-->
-    <!-- footer built in JS -->
-    <script>
-        document.write(getFooter());
-    </script>
+    <!-- begin footer -->
+    <footer id="footer_app">
+        <!-- footer built in Vue JS -->
+    </footer>
     <!-- end footer -->
 </body>
 <!-- end body -->

@@ -6,7 +6,7 @@
 ### Instructions:
 -   All files must stay together in the file directory found in the GitHub repository.  The primary launch page is intended to be index.html
 
-## New Version - Term Project (HTML, CSS, JavaScript, Vue.js, etc.) 12/5/2023 Work in Progress
+## New Version - Term Project (HTML, CSS, JavaScript, Vue.js, etc.) 12/8/2023 Work in Progress
 -   Students will be evaluated on how well they have mastered the following topics:
     -	Web languages 
     -	HTML5
@@ -19,7 +19,7 @@
     -	Project management for web design and development
  
 ### Features:
--   JavaScript is now utilized to construct header and footer, which make alteration easier across multiple pages without editing HTML.
+-   Vue + JavaScript is now utilized to construct header and footer, which make alteration easier across multiple pages without editing HTML.
 -   DOM Manipulation from JS.
     -   JavaScript is used to highlight navigation button corresponding to active page using tag ID comparisons.
     -   JavaScript is used to highlight table data cells in all table on mouseover.

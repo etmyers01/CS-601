@@ -5,9 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.0/vue.global.min.js"
+        integrity="sha512-FoPuJUwBEL6FkeJZcmV/zTgUQO2G/feesn8dgFmYYJMZZZInQ2Oqfeeo02hYfKHjwGWZdcK5afJaY0VDK8Fatw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" type="text/css" href="./css/main.css">
     <script src="./js/main.js"></script>
+    <script src="./js/vue.js" defer></script>
     <title id="studies">The Good Things</title>
     <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
     <link rel=“shortcut icon” href=“./images/favicon.ico” type=“image/x-icon”>
@@ -17,10 +20,10 @@
 <!-- begin Body -->
 
 <body>
-    <!-- header navigation built in JS -->
-    <script>
-        document.write(getHeader());
-    </script>
+    <!-- begin header -->
+    <header id="header_app">
+        <!-- header navigation built in Vue JS -->
+    </header>
     <!-- end header-->
     <main> <!-- begin main page -->
 
@@ -31,7 +34,8 @@
             <section> <!-- section #1-->
                 <h3>Boston University Online Campus</h3>
                 <figure> <!-- banner img-->
-                    <img id="pic3" src="./images/graduation-6840941_1280.png" alt="Taking Steps Toward Graduation" width="640" height="458">
+                    <img id="pic3" src="./images/graduation-6840941_1280.png" alt="Taking Steps Toward Graduation"
+                        width="640" height="458">
                     <figcaption>Taking Steps Towards Graduation - Source: Pixabay Free License</figcaption>
                 </figure>
 
@@ -95,10 +99,10 @@
             </section> <!-- end section 2 -->
         </article>
     </main> <!-- end main page -->
-    <!-- footer built in JS -->
-    <script>
-        document.write(getFooter());
-    </script>
+    <!-- begin footer -->
+    <footer id="footer_app">
+        <!-- footer built in Vue JS -->
+    </footer>
     <!-- end footer -->
 </body>
 <!-- end body -->
