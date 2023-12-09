@@ -37,6 +37,12 @@
     -   Google Chrome app   (400px mobile portrait rotation, 600px landscape rotation)
     -   Mozilla Firefox app (400px mobile portrait rotation, 600px landscape rotation)
 
+### Reflections  
+-   I put a significant amount of time into this website (40+ hours).  Most of the time was spent testing it across different browsers and resizing.  I found it challenging to get the required elements in at the end due to time constraints as I didn't have the luxury of tons of independent research time or forward reading through the modules as was suggested.  As a result I feel about 90% happy with the state of the site at this time.  Given longer, I would incorporate more JS and Vue.js elements to add more functionality and probably rework some of the flow between different breakpoint views.  
+-   I took into consideration the recommendations of my mid-term project review and incorporated many of the features suggested, such as a reworked menu in mobile-mode, favicons, noscript tags, adjusting the usage of script font, edge bordering, more JavaScript functionality and Vue.js components. Testing was as robust as I could make it with the devices I had available.  
+
+Thank you for your time, I hope you enjoy my submission.
+
 ### Above & Beyond (across versions)
 -   JSON & JavaScript w/ fetch is used to dynamically populate work examples to DOM within projects page.
 -   Contacts page has clickable buttons that generate dynamic HTML content, then uses keyframe animations to fade in and out before resetting the HTML.
@@ -57,7 +63,7 @@
 -   Gallery page uses flexbox to reorganize pictures in a self-sorted double column.  This collapses to a single column upon screen shrink.
 -   At screen breakpoints, numerous page attributes are affected:
     -   font size increases 
-    -   images remove margins, auto-size down to 360px minimum
+    -   images remove margins, auto-size down to 400px minimum
     -   headers become centered instead of left-justified
 -   For print mode: several display changes are made:
     -   fonts converted to serif
@@ -83,7 +89,7 @@ Without using JavaScript, add CSS to your minimum 3-page HTML website and use th
 -   "main.css" is now used to externally style all web pages
 -   All pages have been passed through W3C and CSS validation without errors
 -   All major HTML tags and features have received some form of styling.
--   Page body behavior dynamically changes upon window resizing at three breakpoints using @media display tags (768px, 600px, and 400px)
+-   Page body behavior dynamically changes upon window resizing at three breakpoints using @media display tags (900px, 600px, and 400px)
 
 ### Above & Beyond
 -   Multiple types of fonts were used across headers and paragraphs to give visual interest.
@@ -122,5 +128,3 @@ Generate an 3-page minimum HTML website that uses only HTML/HTML5 with no elemen
 -   In location.html, I nest an iframe of embedded google map code within a feature tag
 -   Also within location.html are several inline operators and emoji demonstration
 -   The contact.html page has several more external links as well as an email link.
-
-Thank you for your time, I hope you enjoy my submission.
