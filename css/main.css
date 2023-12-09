@@ -390,7 +390,7 @@ noscript  {
     padding-bottom: 0;
 
     /* for links specifically */
-    a {    
+     & a {    
         margin-left: 2px;
         margin-right: 2px;
         font-size: 14pt;    
@@ -653,7 +653,7 @@ noscript  {
         text-decoration: none;
         border: 1px solid grey;
         font-family: 'Courier New', Courier, monospace;
-        padding: px;
+        padding: 0px;
         background-color: #69c2e6;
         box-shadow: 0 0 5px;
         font-weight: bolder;
