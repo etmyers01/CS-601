@@ -6,7 +6,7 @@
 ### Instructions:
 -   All files must stay together in the file directory found in the GitHub repository.  The primary launch page is intended to be index.html
 
-## New Version - Term Project (HTML, CSS, JavaScript, Vue.js, etc.) 12/8/2023 Work in Progress
+## New Version - Term Project (HTML, CSS, JavaScript, Vue.js, etc.) 12/9/2023 Final Version
 -   Students will be evaluated on how well they have mastered the following topics:
     -	Web languages 
     -	HTML5
