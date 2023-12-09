@@ -29,15 +29,21 @@
 -   Multiple image resolutions supported based on viewing window via @media tag.  All original images upon load are individually sized, alt tagged and src set prior to CSS styling.
 -   Website live on GitHub Pages (https://etmyers01.github.io/CS-601/)
 -   Code public on GitHub repo (https://github.com/etmyers01/CS-601)
-
--   <mark>Testing across 3 browsers plus mobile devices is ongoing. </mark>
+-   Elements tested on Windows 10, 11 browsers
+    -   Microsoft Edge      (900+px, 600px, 400px sliding scale)
+    -   Mozilla Firefox     (900+px, 600px, 400px sliding scale)
+    -   Google Chrome       (900+px, 600px, 400px sliding scale)
+-   Elements tested on Samsung Galaxy S21
+    -   Google Chrome app   (400px mobile portrait rotation, 600px landscape rotation)
+    -   Mozilla Firefox app (400px mobile portrait rotation, 600px landscape rotation)
 
 ### Above & Beyond (across versions)
 -   JSON & JavaScript w/ fetch is used to dynamically populate work examples to DOM within projects page.
 -   Contacts page has clickable buttons that generate dynamic HTML content, then uses keyframe animations to fade in and out before resetting the HTML.
 -   Mobile hamburger button created for viewing on mobile devices to enable and collapse main navigation
--   Quote API utilized to create random quote on the contacts page
+-   Quote API utilized to create random quote on the contacts page.
     - credit : https://forum.freecodecamp.org/t/free-api-inspirational-quotes-json-with-code-examples/311373
+-   limited functionality exists for viewing with script blockers using noscript tags.
 
 #### From Version 2
 -   Multiple types of fonts were used across headers and paragraphs to give visual interest.

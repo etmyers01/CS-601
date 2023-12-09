@@ -18,63 +18,32 @@
     font-style: normal;
 }
 
+/* ----------------------------------------- full screen styling ------------*/
+
 /* image sources, based on wide format */
-#pic1 {
-    content: url(../images/adams_ricci_4.jpg);
-}
-
-#pic2 {
-    content: url(../images/nature-3316587_1280.jpg);
-}
-
-#pic3 {
-    content: url(../images/graduation-6840941_1280.png);
-}
-
-#pic4 {
-    content: url(../images/the-museum-840100_1280.jpg);
-}
-
-#pic5 {
-    content: url(../images/wastewater_plant.jpg);
-}
-
-#pic6 {
-    content: url(../images/contact-us-6921414_1280.jpg);
-}
-
-#pic7 {
-    content: url(../images/businessman-3213659_1280.jpg);
-}
+#pic1 {    content: url(../images/adams_ricci_4.jpg);}
+#pic2 {    content: url(../images/nature-3316587_1280.jpg);}
+#pic3 {    content: url(../images/graduation-6840941_1280.png);}
+#pic4 {    content: url(../images/the-museum-840100_1280.jpg);}
+#pic5 {    content: url(../images/wastewater_plant.jpg);}
+#pic6 {    content: url(../images/contact-us-6921414_1280.jpg);}
+#pic7 {    content: url(../images/businessman-3213659_1280.jpg);}
 
 /* creative decision to have all content maximums scale no wider than 960px */
-* {
-    max-width: 960px;
-}
+* {    max-width: 960px;}
 
 /* html styling as a table with single column with auto margins to center the content in an oversized window. */
-html {
-    display: table;
-    margin: auto;
-}
+html {    display: table;    margin: auto;}
 
 /* body container.  sets a san-serif font type, removes artifical margin and sets background color */
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    /* background-color: rgb(243, 216, 177); replaced by palette */
     display: table-cell;
 }
 
 /* font specification for many headers, legends, and leading elements for continuity.  
 custom font is first priority, with a failback of several fonts in the san-serif family. */
-h1,
-h2,
-h3,
-th,
-ol,
-legend,
-#p_url,
-blockquote div {
+h1, h2, h3, th, ol, legend, #p_url, blockquote div {
     font-family: 'satisfyregular', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -84,6 +53,7 @@ li p {
     font: normal 1em 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+/* disable the mobile menu button in any @media greater than 400px */
 #smallMenu {
     display: none;
 }
@@ -100,7 +70,6 @@ li p {
     padding-inline-start: 3ch;
 }
 
-
 /* custom sizing and font type for main headline.  adjusted top and bottom margings to allow more body content upward */
 h1 {
     font-size: 32pt;
@@ -115,7 +84,6 @@ h1 {
         margin-left: 100%;
         width: 100%
     }
-
     to {
         margin-left: 0%;
         width: 100%;
@@ -124,32 +92,15 @@ h1 {
 
 /* keyframe animation: sliding in from right.  To use with h3 headers */
 @keyframes slidein-right {
-    from {
-        margin-left: -100%;
-        width: 100%
-    }
-
-    to {
-        margin-left: 0%;
-        width: 100%;
-    }
+    from {      margin-left: -100%;     width: 100%    }
+    to {        margin-left: 0%;        width: 100%;   }
 }
 
 /* keyframe animation: fade in and out.  used for contact aside dynamic HTML */
 @keyframes fade {
-
-    0%,
-    100% {
-        opacity: 0
-    }
-
-    20% {
-        opacity: 1
-    }
-
-    80% {
-        opacity: 1
-    }
+    0%, 100% {   opacity: 0    }
+    20% {        opacity: 1    }
+    80% {        opacity: 1    }
 }
 
 /* custom sizing for h2.  specified larger sizing for emphasis and enabled animation */
@@ -249,9 +200,7 @@ figcaption {
 }
 
 /* tag used to identify start of body content on page.  point of reference for top of page offset to not collide with header nav */
-#start-content {
-    padding-top: 120px;
-}
+#start-content {    padding-top: 120px;}
 
 /* main navigation button row, flex sized in row orientation at full width */
 .main-nav {
@@ -335,7 +284,7 @@ footer p {
     padding: 2px;
 }
 
-/* ~~ projects page CSS - styling JSON input ~~ */
+/* ~~--------------------------- projects page CSS - styling JSON input ~~ */
 
 /* fieldset background color styling */
 fieldset {
@@ -352,10 +301,7 @@ legend {
 }
 
 /* styling of project type parameter, blue text, right justified, different font */
-#p_type,
-h4,
-li input,
-blockquote {
+#p_type, h4, li input, blockquote {
     text-align: right;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bolder;
@@ -382,7 +328,7 @@ blockquote {
     display: flex;
 }
 
-/* ~~ styling for contact page buttons and fade-in dynamic HTML ~~ */
+/* ~~---------------------- styling for contact page buttons and fade-in dynamic HTML ~~ */
 
 /* contact buttons container on contact page */
 #contactButtons {
@@ -418,14 +364,13 @@ li>input {
 }
 
 /* header styles used within contact page dynamic html */
-h4,
-h5 {
+h4, h5 {
     margin-top: 5px;
     margin-bottom: 5px;
     font-size: large;
 }
 
-/* ~~ fade text on contact page wrapped in aside tags. ~~ */
+/* ~~------------------------ fade text on contact page wrapped in aside tags. ~~ */
 
 /* paragraph styling sets margin & font size */
 aside p {
@@ -437,6 +382,31 @@ aside p {
 aside a {
     display: block;
 }
+
+/* ---------------------------- noscript styling -------------------------- */
+noscript  { 
+    text-align: center;
+    margin-bottom: 0;
+    padding-bottom: 0;
+
+    /* for links specifically */
+    a {    
+        margin-left: 2px;
+        margin-right: 2px;
+        font-size: 14pt;    
+    }
+
+    /* when screen in mobile mode */
+    @media only screen and (max-width: 400px) {
+
+        #hdrCont, h1 {
+            text-align:center;
+            width: 100%;
+            
+        }
+    }
+}
+
 
 /* ~~ changes to the layout when the screen is at or contracts to 900px ~~ */
 @media only screen and (max-width: 900px) {
@@ -475,33 +445,13 @@ aside a {
 @media only screen and (max-width: 600px) {
 
     /* image resourcing, to point to lower resolution images */
-    #pic1 {
-        content: url(../images/adams_ricci_4.jpg);
-    }
-
-    #pic2 {
-        content: url(../images/nature-3316587_640.jpg);
-    }
-
-    #pic3 {
-        content: url(../images/graduation-6840941_640.png);
-    }
-
-    #pic4 {
-        content: url(../images/the-museum-840100_640.jpg);
-    }
-
-    #pic5 {
-        content: url(../images/wastewater_plant.jpg);
-    }
-
-    #pic6 {
-        content: url(../images/contact-us-6921414_640.jpg);
-    }
-
-    #pic7 {
-        content: url(../images/businessman-3213659_640.jpg);
-    }
+    #pic1 {        content: url(../images/adams_ricci_4.jpg);    }
+    #pic2 {        content: url(../images/nature-3316587_640.jpg);    }
+    #pic3 {        content: url(../images/graduation-6840941_640.png);    }
+    #pic4 {        content: url(../images/the-museum-840100_640.jpg);    }
+    #pic5 {        content: url(../images/wastewater_plant.jpg);    }
+    #pic6 {        content: url(../images/contact-us-6921414_640.jpg);    }
+    #pic7 {        content: url(../images/businessman-3213659_640.jpg);    }
 
     /* the start content top margin buffer changes to fit the new top nav gridwork 2x3 */
     #start-content {
@@ -578,7 +528,7 @@ aside a {
         vertical-align: middle;
     }
 
-    /* ~~ styling for hamburger menu button.  only shows when screen at 400px or less ~~ */
+    /* ~~--------------- styling for hamburger menu button.  only shows when screen at 400px or less ~~ */
 
     /* nav header styling when class=closed (makes mobile menu disappear) */
     #nav-header.closed {
@@ -650,7 +600,7 @@ aside a {
         font-size: 14pt;
     }
 
-    /* ~~ contact page narrow styling ~~ */
+    /* ~~----------------------------------- contact page narrow styling ~~ */
 
     /* contact buttons container on contact page */
     #contactBody {
@@ -766,5 +716,4 @@ aside a {
             content: " (" attr(href)")";
         }
     }
-
 }

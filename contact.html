@@ -23,6 +23,26 @@
     <!-- begin header -->
     <header id="header_app">
         <!-- header navigation built in Vue JS -->
+
+        <!-- noscript alternative menu -->
+        <noscript>
+            <div id="nav-header">
+                <div id="hdrCont">
+                    <h1>The Good Things</h1>
+                </div>
+                <!-- header nav buttons -->
+                <nav id="main-nav" class="main-nav "></nav>
+                    <a href="./index.html">Home</a>
+                    <a href="./about.html">About</a>
+                    <a href="./location.html">My Backyard</a>
+                    <a href="./studies.html">Studies</a>
+                    <a href="./projects.html">Projects</a>
+                    <a href="./gallery.html">Gallery</a>
+                    <a href="./contact.html">Contact Me</a>
+                </nav>
+            </div>
+        </noscript>
+
     </header>
     <!-- end header-->
     <main> <!-- begin main page -->
@@ -47,6 +67,13 @@
                             <li><input type="button" onclick='contactText(2)' value="GitHub" id="git_button"></li>
                             <li><input type="button" onclick='contactText(3)' value="Email" id="email_button"></li>
                         </ul>
+                        <!-- noscript alternative-->
+                        <noscript>
+                            <p>JavaScript Disabled</p> 
+                            <p><a href="https://www.linkedin.com/in/edward-myers-47873a147/">Click Here for LinkedIn</a></p>
+                            <p><a href="https://github.com/etmyers01/CS-601">Click Here for GitHub</a></p>
+                            <p><a href="mailto:emyers01@bu.edu">Click Here for Email</a></p>
+                        </noscript>
                     </div>
                     <div id="flyBox">
                         <div id="contactPop">
@@ -71,6 +98,14 @@
     <!-- begin footer -->
     <footer id="footer_app">
         <!-- footer built in Vue JS -->
+        
+        <!-- noscript alternative -->
+        <noscript>
+            <div id="'footer'" class="footer w3_theme-d2">
+                <p>&copy; 2023 Ed Myers - Created using Visual Studio Code - MIT License</p>
+                <a target="'_blank'" href="https://icons8.com/icon/aHwWbh5ZWWLq/clover">Clover</a> icon by <a target="'_blank'" href="https://icons8.com">Icons8</a>
+            </div>
+        </noscript>
     </footer>
     <!-- end footer -->
 </body>
