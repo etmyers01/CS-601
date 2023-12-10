@@ -388,24 +388,15 @@ noscript  {
     text-align: center;
     margin-bottom: 0;
     padding-bottom: 0;
-
+}
     /* for links specifically */
-     & a {    
+noscript a {    
         margin-left: 2px;
         margin-right: 2px;
         font-size: 14pt;    
-    }
-
-    /* when screen in mobile mode */
-    @media only screen and (max-width: 400px) {
-
-        #hdrCont, h1 {
-            text-align:center;
-            width: 100%;
-            
-        }
-    }
 }
+
+
 
 
 /* ~~ changes to the layout when the screen is at or contracts to 900px ~~ */
@@ -516,6 +507,13 @@ noscript  {
 /* ~~ changes to the layout when the screen is at or contracts to 400px ~~ */
 @media only screen and (max-width: 400px) {
 
+    /* noscript styling for header div and h1 title */
+    noscript #hdrCont, noscript h1 {
+        text-align:center;
+        width: 100%;
+        
+    }
+
     /* the lead heading font size becomes variable, shrinking to no less than 10pt, but then fitting the window*/
     h1 {
         font-size: calc(10pt + 4vw);
@@ -531,20 +529,18 @@ noscript  {
     /* ~~--------------- styling for hamburger menu button.  only shows when screen at 400px or less ~~ */
 
     /* nav header styling when class=closed (makes mobile menu disappear) */
-    #nav-header.closed {
-        #main-nav {
+    #nav-header.closed #main-nav
+    {
             display: none;
-        }
     }
 
     /* nav header styling when class=open (makes mobile menu appear) */
-    #nav-header.open {
-        #main-nav {
+    #nav-header.open #main-nav{
             display: flex;
             flex-direction: column;
             padding: 0;
             text-align: center;
-        }
+        
     }
 
     /* header container, holds hamburger menu button and title header */
